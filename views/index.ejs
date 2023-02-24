@@ -1,8 +1,18 @@
 <%- include('partials/header') %>
-
-<main>
-  <h1><%= title %></h1>
-  <p>Welcome to <%= title %></p>
-</main>
+<div class="flex-col">
+  <main id="visitor-page" class="flex-col">
+    <img src="https://cdn-icons-png.flaticon.com/512/763/763294.png" class="planit-icon" alt="">
+    <div class="visitor-front-div flex-col">
+      <h1>PLANIT</h1>
+      <h4>Task Management <span class="emphasize-text"> Simplified</span></h4>
+      <p>Sign in with Google</p>
+      <p>(Must have a Google Account to use service)</p>
+      <div class="flex-row signInDiv">
+        <img src="https://i.imgur.com/FHjYyi0.png" class="link-icons google-btn" alt="">
+        <a href="/auth/google" class="btn-signIn flex-row">SIGN IN</a>
+      </div>
+    </div>
+  </main>
+</div>
   
 <%- include('partials/footer') %>

@@ -1,7 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   padding: 0;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(274deg, #e4e8ff, #fff7e5)
+}
+
+/* UTILITIES */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.emphasize-text {
+  text-decoration: underline;
+}
+
+.link-icons {
+  width: 8vmin;
+}
+
+.planit-icon {
+  width: 12vmin;
+  position: relative;
+  top: 8vmin;
+  left: -32vmin;
+}
+
+.google-btn {
+  background-color: rgba(0, 0, 0, 0.844);
+  border-radius: 80px;
+  position: relative;
+  padding: 2vmin;
+  left: 42px;
+}
+
+.btn-signIn {
+  background-color: rgba(0, 0, 0, 0.822);
+  padding: 2vmin;
+  border-radius: 80px;
+  width: 150px;
+  color: white;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 3vmin;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.btn-signIn:hover {
+  background-color: rgb(86, 84, 233);
+}
+
+#btn-logout {
+  background-color: #ff0000;
+  text-decoration: none;
 }
 
 /* NAVIGATION */
@@ -10,30 +74,52 @@ nav {
   background-color: black;
 }
 
-.login-div {
-  background-color: rgb(40, 39, 37);
-  max-width: fit-content;
+/* VISITOR */
+#visitor-page {
+  background: rgba(255, 255, 255, 0.286);
+  backdrop-filter: blur( 13.5px );
+  -webkit-backdrop-filter: blur( 13.5px );
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.69);
+  margin: 18vmin 2vmin;
+  padding: 2vmin;
+  width: 80vmin;
 }
 
-.logInOut {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 34px;
-  text-decoration: none;
-  color: white;
-  padding: 3vmin;
+.visitor-front-div {
+  background: #faf4ff90;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 13.5px );
+  -webkit-backdrop-filter: blur( 13.5px );
+  padding: 2vmin 5vmin;
+  border-radius: 130px 30px 30px 30px;
+  letter-spacing: 1px;
+  height: 50vmin;
+  width: 70vmin;
 }
-.logInOut:hover {
-  background-color: rgb(82, 84, 86);
+.visitor-front-div h1 {
+  font-size: 12vmin;
+  letter-spacing: 10px;
+  color: rgb(62, 57, 57);
+  margin-top: 2vmin;
+}
+.visitor-front-div p {
+  margin: 3px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.visitor-front-div h4 {
+  font-size: 3vmin;
+  color: rgb(63, 68, 98);
+  font-weight: 400;
+  margin-bottom: 4vmin;
 }
 
-.logInOut img {
-  height: 30px;
-  margin-left: 7px;
+.visitor-front-div div {
+  margin-top: 2vmin;
 }
 
-/* MAIN HEADER */
-main {
-  margin: 3vmin;
+h3 {
+  color: red;
 }

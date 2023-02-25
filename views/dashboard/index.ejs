@@ -1,6 +1,22 @@
-<% if (user) { %>
-  <%- include('../partials/navbar') %>
-<% } %>
-<div>
-  <h3>YOU ARE SIGNED IN!</h3>
+<%- include('../partials/header') %>
+<div class="dashboard-container flex-row">
+  <div>
+    <% if (user) { %>
+      <%- include('../partials/navbar') %>
+    <% } %>
+  </div>
+
+  <!--calendar view might keep getting rendered?-->
+  <div class="calendar">
+    <h3>YOU ARE SIGNED IN!</h3>
+  </div>
+  <div class="task-day-view">
+    <h3></h3>
+    <!--for each task-->
+    <div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 </div>

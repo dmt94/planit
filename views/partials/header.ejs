@@ -8,3 +8,21 @@
   <title>Change Later</title>
 </head>
 <body>
+  <div>
+    <% if (user) { %>
+      <nav class="flex-row top-nav">
+        <div class="flex-row">
+          <img src="https://cdn-icons-png.flaticon.com/512/447/447144.png" alt="planit avatar" class="link-icons">
+          <h2>PLANIT</h2>
+        </div>
+        <div>
+          <!--Filter through tasks-->
+          <form class="form-filter-search" action="">
+            <label>Search</label>
+            <input type="text">
+            <input type="submit" class="btn-search">
+          </form>
+        </div>
+      </nav>
+    <% } %>
+  </div>

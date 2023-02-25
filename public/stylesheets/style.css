@@ -23,6 +23,9 @@ body {
   flex-direction: row;
   align-items: center;
 }
+.top-nav {
+  align-content: space-between;
+}
 
 .emphasize-text {
   text-decoration: underline;
@@ -30,6 +33,31 @@ body {
 
 .link-icons {
   width: 8vmin;
+}
+
+.round-icon {
+  border-radius: 50px;
+  width: 10vmin;
+  height: 10vmin;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  justify-content: center;
+}
+
+.icon-img {
+  width: 5vmin;
+}
+
+.active {
+  opacity: 1;
+}
+.not-active {
+  opacity: 0.3;
+}
+.dashboard-icon {
+  background-color: rgb(190, 188, 255);
+}
+.finance-icon {
+  background-color: rgb(187, 255, 151);
 }
 
 .planit-icon {
@@ -64,14 +92,60 @@ body {
 }
 
 #btn-logout {
-  background-color: #ff0000;
+  background-color: #F3665D;
+  padding: 7px;
   text-decoration: none;
+  border-radius: 20px;
+  font-weight: 700;
+  margin: 3vmin 2vmin;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+#btn-logout:hover {
+  background-color: #9b989803;
+  color: #F3665D;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
 /* NAVIGATION */
 
 nav {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 2vmin 0 2vmin 2vmin;
+  justify-content: space-between;
+  max-width: 1219px;
+}
+
+nav h2 {
+  display: inline-block;
+  letter-spacing: 5px;
+  color: rgb(37, 34, 34);
+}
+
+.form-filter-search {
+  margin-right: 8vmin;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 140px;
+  border-radius: 40px;
+  margin: 2vmin 0 0 3vmin;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 4vmin 0 12vmin 0;
+}
+
+.sidebar a.round-icon,
+.sidebar div {
+  margin: 2vmin;
+}
+
+.sidebar a {
+  font-size: 15px;
+  color: black;
+}
+
+.sidebar a:hover {
+  opacity: 0.7;
 }
 
 /* VISITOR */
@@ -87,11 +161,15 @@ nav {
   width: 80vmin;
 }
 
-.visitor-front-div {
-  background: #faf4ff90;
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+.glass-filter {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   backdrop-filter: blur( 13.5px );
   -webkit-backdrop-filter: blur( 13.5px );
+  border: 1px solid white;
+}
+
+.visitor-front-div {
+  background: #faf4ff90;
   padding: 2vmin 5vmin;
   border-radius: 130px 30px 30px 30px;
   letter-spacing: 1px;
@@ -120,6 +198,15 @@ nav {
   margin-top: 2vmin;
 }
 
-h3 {
-  color: red;
+/* DASHBOARD */
+.calendar {
+  margin: 10vmin 10vmin;
+  width: 500px;
+  height: 450px;
+  background-color: rgb(28, 28, 30);
+}
+
+.task-day-view {
+  margin: 5vmin 5vmin;
+  background-color: rgb(28, 28, 30);
 }

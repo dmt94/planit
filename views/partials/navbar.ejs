@@ -1,5 +1,14 @@
-<%- include('../partials/header') %>
-<nav>
+<div class="sidebar glass-filter flex-col">
   <a href="/logout" id="btn-logout">LOG OUT</a>
-  <h2>hi</h2>
-</nav>
+  <div class="flex-row">
+    <img src="<%= user.avatar %>" alt="" class="round-icon">
+  </div>
+  <a
+  class="round-icon flex-row <%- title === 'Dashboard' ? 'dashboard-icon active' : 'not-active' %>" href="">
+    <img src="https://cdn-icons-png.flaticon.com/512/9311/9311178.png" alt="" class="icon-img">
+  </a>
+  <a
+  class="round-icon flex-row <%- title === 'Finance' ? 'finance-icon active' : 'finance-icon not-active' %>" href="">
+    <img src="https://cdn-icons-png.flaticon.com/512/1013/1013401.png" alt="" class="icon-img">
+  </a>
+</div>

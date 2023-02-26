@@ -13,11 +13,15 @@ body {
   
 }
 
-#my-calendar {
+#calendar {
   margin: 10vmin;
   border: 0.5px solid rgb(54, 50, 50);
   border-radius: 22px;
   font-family: 'Inter', sans-serif;
+}
+
+div#calendar.vanilla-calendar.vanilla-calendar_default {
+  background-color: #f3675d1a;
 }
 
 /* UTILITIES */

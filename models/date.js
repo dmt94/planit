@@ -10,7 +10,11 @@ const dateSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Event'
   }
-  ]}, 
+  ],
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  }},
   {
   timestamps: true
 });

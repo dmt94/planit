@@ -9,12 +9,10 @@ const userSchema = new Schema({
   },
   email: String,
   avatar: String,
-  date: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Date'
-    }
-  ]
+  date: {
+    type: Schema.Types.ObjectId,
+    ref: 'Date',
+  }
 }, {
   timestamps: true
 });

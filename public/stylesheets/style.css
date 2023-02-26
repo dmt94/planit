@@ -9,7 +9,15 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(274deg, #e4e8ff, #fff7e5)
+  background-image: linear-gradient(to right, rgb(61, 58, 58) , rgb(100, 98, 149));
+  
+}
+
+#my-calendar {
+  margin: 10vmin;
+  border: 0.5px solid rgb(54, 50, 50);
+  border-radius: 22px;
+  font-family: 'Inter', sans-serif;
 }
 
 /* UTILITIES */
@@ -127,11 +135,11 @@ nav h2 {
 
 /* SIDEBAR */
 .sidebar {
-  width: 140px;
   border-radius: 40px;
   margin: 2vmin 0 0 3vmin;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   padding: 4vmin 0 12vmin 0;
+  background-color: rgba(248, 240, 255, 0.397);
 }
 
 .sidebar a.round-icon,
@@ -165,7 +173,6 @@ nav h2 {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   backdrop-filter: blur( 13.5px );
   -webkit-backdrop-filter: blur( 13.5px );
-  border: 1px solid white;
 }
 
 .visitor-front-div {

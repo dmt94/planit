@@ -5,7 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel='stylesheet' href='/stylesheets/style.css' />
-  <title>Change Later</title>
+  <title>PlanIt</title>
+  <!--calendar script-->
+    <% if (user) { %>
+      <script src="/scripts/datedreamer.js"></script>
+      <script>
+        window.onload = () => {
+            new datedreamer.calendar({
+              element: "#my-calendar",
+              theme: "unstyled",
+              darkMode: false,
+              format: "MM/DD/YYYY",
+              styles: `
+              .datedreamer__calendar_day {
+                width: 10vmin;
+              }
+              .datedreamer__calendar_days-header * {
+                background-color: rgba(20, 29, 29, 0.2);
+                border-radius: 25px;
+                color: white;
+                border: 1px solid white;
+              }
+              .datedreamer__calendar_title {
+                color: white;
+                font-size: 4vmin;
+              }
+              label {
+                color: white;
+              }
+                div.datedreamer__calendar {
+                  background-color: rgba(30, 36, 47, 0.9);
+                  border-radius: 22px;
+                  width: 77vmin;
+                  max-width: none;
+                  font-family: 'Inter', sans-serif;
+                }
+                .datedreamer__calendar_day button {
+                  color: white;
+                  border: none;
+                  background-color: rgba(28, 29, 29, 0);
+                  padding: 4vmin 0;
+                  font-size: 4vmin;
+                  font-weight: 800;            
+                }
+                .datedreamer__calendar_day button:hover {
+                  background-color: rgb(236, 255, 68, 0.7);
+                  border-radius: 10px;
+                  color: black;
+                }
+                .datedreamer__calendar_day.active button {
+                  border-radius: 50px;
+                  background-color: rgba(28, 29, 29, 0);
+                  color: #E1FD35;
+                }
+                button:disabled {
+                  color: gray;
+                }
+                .datedreamer__calendar_inputs {
+                  width: 30vmin;
+                }
+                input {
+                  padding: 1vmin;
+                  background-color: rgba(28, 29, 29, 0.9);
+                  color: white;
+                  border: none;
+                  border-radius: 10px;
+                }
+                button {
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #E1FD35;
+                  color: black;
+                }
+                button:hover {
+                  cursor: pointer;
+                  background-color: rgb(57, 51, 227);
+                  color: white;
+                }
+                `,onChange: (e) => {
+          // Get Date object from event
+          console.log(e.detail);
+      }})}
+    </script>
+    <% } %>
+  <!--end of calendar script-->
 </head>
 <body>
   <div>

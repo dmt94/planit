@@ -219,5 +219,17 @@ nav h2 {
 
 .task-day-view {
   margin: 5vmin 5vmin;
-  background-color: rgb(28, 28, 30);
+  background-color: rgba(28, 28, 30, 0.524);
+  height: 300px;
+}
+.task-day-view div * {
+  margin: 10px;
+}
+
+.add-button {
+  padding: 1vmin;
+  text-decoration: none;
+  color: black;
+  background-color: rgb(255, 165, 255);
+  margin: 4px;
 }

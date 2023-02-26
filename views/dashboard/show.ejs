@@ -7,8 +7,11 @@
   </div>
   <!--calendar view might keep getting rendered?-->
   <%- include('../partials/calendar') %>
-  <div class="task-day-view flex-c">
+  <div class="task-day-view flex-col">
     <h3><%= date %></h3>
-    <!--for each task-->
+    <div class=" flex-col">
+      <h4>Add Event</h4>
+      <a class="add-button" href="/dashboard/new">+</a>
+    </div>
   </div>
 </div>

@@ -5,6 +5,6 @@ const dashBoardCtrl = require('../controllers/dashboard');
 
 /* GET users listing. */
 router.get('/', ensureLoggedIn, dashBoardCtrl.index);
-router.get('/view', ensureLoggedIn, dashBoardCtrl.view);
+router.get('/show', ensureLoggedIn, dashBoardCtrl.show);
 
 module.exports = router;

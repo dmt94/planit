@@ -23,7 +23,11 @@
               clickDay(event, dates) {
                 console.log(event.target);
                 console.log(dates);
-                $.get(`/dashboard/view?date=${dates[0]}`, function(data, status) { console.log(`${data}`); })
+                event.target.setAttribute("type", "submit");
+                $.get(`/dashboard/show?date=${dates}`, function(data, status) { 
+                  event.preventDefault();
+                  window.location = `/dashboard/show?date=${dates}`;   
+                 })
               }
             }
           });

@@ -8,7 +8,13 @@ const userSchema = new Schema({
     required: true
   },
   email: String,
-  avatar: String
+  avatar: String,
+  date: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Date'
+    }
+  ]
 }, {
   timestamps: true
 });

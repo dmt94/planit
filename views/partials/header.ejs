@@ -34,7 +34,7 @@
                 color: white;
               }
                 div.datedreamer__calendar {
-                  background-color: rgba(30, 36, 47, 0.9);
+                  background-color: rgba(30, 36, 47, 0.5);
                   border-radius: 22px;
                   width: 77vmin;
                   max-width: none;
@@ -85,6 +85,10 @@
                 `,onChange: (e) => {
           // Get Date object from event
           console.log(e.detail);
+          let month = e.detail.split('/')[0];
+          let day = e.detail.split('/')[1];
+          let year = e.detail.split('/')[2];
+          const date = new Date(year, month-1, day);          
       }})}
     </script>
     <% } %>

@@ -233,3 +233,7 @@ nav h2 {
   background-color: rgb(255, 165, 255);
   margin: 4px;
 }
+
+form {
+  margin-left: 14vmin;
+}

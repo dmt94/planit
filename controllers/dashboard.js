@@ -1,6 +1,5 @@
 const User = require('../models/user');
 
-
 module.exports = {
   index,
   show,
@@ -27,8 +26,8 @@ function show(req, res) {
       console.log("query", req.query);
       
       res.render('dashboard/show', {
-        date: req.query.date,
         user: req.user,
+        date: req.query.date,
         title: 'Dashboard'
       })
     }
@@ -36,5 +35,10 @@ function show(req, res) {
 }
 
 function newDateEvent(req, res) {
-
+  console.log(req.query.date);
+  res.render('dashboard/new', {
+    user: req.user,
+    date: req.query.date,
+    title: 'Dashboard',
+  })
 }

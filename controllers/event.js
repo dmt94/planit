@@ -35,10 +35,14 @@ function create(req, res) {
             date: dateObj,
             user: user._id
           }, function(err, date) {
-            date.event.push(event);
-            user.date.push(date);
-            user.save(function(err) {
-              res.redirect(`/dashboard`);
+            console.log("DATE", date);
+            console.log("EVENT", event);
+            date.event.push(event._id);
+            date.save(function (err) {
+              user.date.push(date);
+              user.save(function(err) {
+                res.redirect(`/dashboard`);
+              })
             })
           })
         })

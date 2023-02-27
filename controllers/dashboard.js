@@ -48,11 +48,6 @@ function show(req, res) {
      })}
     )}         
       
-      
-   
-
-    
-
 function newDateEvent(req, res) {
   console.log(req.query.date);
   res.render('dashboard/new', {

@@ -2,17 +2,18 @@ const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
 
-const mongoose = require('mongoose');
-
-mongoose.connect(process.env.DATABASE_URL);
-
-// shortcut var to mongoose.connection object
-const db = mongoose.connection;
 
 module.exports = {
-  create
-  // show,
+  create,
+  show
   // new: newDateEvent
+}
+
+function show(req, res) {
+  res.render('date/view', {
+    title: 'Day View',
+    user: req.user
+  })
 }
 
 function create(req, res) {

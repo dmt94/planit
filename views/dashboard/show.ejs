@@ -12,10 +12,11 @@
     <% if (date) { %>
       <div class="flex-col">
         <h3><%= date.date.toLocaleDateString() %></h3>
-        <% if (event) {%>
         <h2>Events</h2>
-        <h4><%= event.name %></h4>
-        <% } %>
+        <% events.forEach(event => { %>
+          <h4><%= event.name %></h4>
+        <% }) %>
+        
         <a class="add-button" href="/">View details</a>
       </div>
     <% } else { %>

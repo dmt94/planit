@@ -2,7 +2,6 @@ const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
 
-
 module.exports = {
   index,
   show,
@@ -34,15 +33,20 @@ function show(req, res) {
         })
       } else {
         if (date.event) {
-          Event.findById(date.event[0], function (err, event) {
+          Event.find({
+            user: user._id,
+            priority: 'TOP 3'
+          }, function(err, event) {
+            console.log("EVENT FOUND", event);
+            console.log("EVENT FOUND", event[0].name);
             res.render('dashboard/show', {
               user: req.user,
               datePicked: req.query.date,
               title: 'Dashboard',
               date: date,
-              event: event
+              events: event
             })
-          })
+          })          
         }
       }
      })}

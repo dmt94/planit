@@ -10,6 +10,10 @@ module.exports = {
   // new: newDateEvent
 }
 
+function getData(arr, key, value) {
+  return arr.filter((object) => object[key] === value);
+}
+
 /* SHOW DAY DETAILS */
 async function show(req, res) {
   console.log("params", req.params);
@@ -17,13 +21,14 @@ async function show(req, res) {
   let DateWithEvents = await DateModel.findById(req.params.id).populate({
     path: 'event'
   });
-
   let events = DateWithEvents.event;
-  console.log("ALL EVENTS", events);
-
+  let topThree = getData(events, "priority", "TOP 3");
+  
   res.render('date/show', {
     title: 'Day View',
-    user: req.user
+    user: req.user,
+    topThree: topThree,
+    events: events
   })
 }
 

@@ -9,8 +9,12 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-image: linear-gradient(to right, rgb(38, 36, 36) , rgb(38, 37, 73));
-  
+  background-image: linear-gradient(to right, rgb(38, 36, 36) , rgb(38, 37, 73)); 
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 50vmin);
 }
 
 #calendar {
@@ -290,9 +294,30 @@ form {
   margin: 14vmin;
   background-color: rgba(0, 0, 0, 0.273);
   color: white;
+  width: 120vmin;
 }
 
 .main-day-view a {
-  margin: 2vmin;
+  margin: 1vmin;
   color:rgb(146, 144, 251);
+}
+
+.day-events-view {
+  /* width: 80vmin; */
+  margin-top: 3vmin;
+  background-color: #F3665D;
+  align-items: center;
+}
+
+.event-view .flex-row {
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.day-events-view-list {
+  margin-top: 2vmin;
+}
+
+.grid-2col * {
+  text-align: center;
 }

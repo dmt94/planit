@@ -8,56 +8,74 @@
 
   <div class="flex-col main-day-view">
     <!--top bar-->
-    <div class="flex-col day-priority-view">
-      <h3>date</h3>
-      <div class="flex-row">
-        <!--for each top 3-->
-        <!-- <div class="flex-col">
-          <h3></h3>
-          <p></p>
-          <h4></h4> -->
-          <!--add task later-->
-          <!-- <div class="flex-col">
-            <h5></h5>
-            <h2></h2>
-            <div class="flex-row"></div>
-          </div> -->
-        <!-- </div> -->
-      </div>
-    </div>
 
-    <div class="flex-row day-special-view"></div>
-    <div class="flex-row day-add-btns">
-      <a href="">Add Event</a>
-      <a href="">Add Tag</a>
-    </div>
-
-
-    <div class="flex-col day-events-view">
-      <h1>Event List</h1>
-      <div class="flex-row">
-
-        <div class="grid-2col">
-          <h3>Time</h3>
-          <h2>Event</h2>
-
-          <h3>Time of Event</h3>
+      <div class="flex-col day-priority-view">
+        <h3></h3>
+        <div class="flex-row">
+          <!--for each top 3-->
+          <% topThree.forEach(priority => { %>
           <div class="flex-col">
-            <h2>Event Name</h2>
-            <p>description</p>
+            <h3><%= priority.name %></h3>
+            <p><%= priority.description %></p>
+            <% if (priority.time) { %>
+              <h4>Time</h4>
+              <h5><%= priority.time %></h5>
+            <% } %>
             <div class="flex-row">
-              <a href="">View More</a>
+              <a href="">View</a>
               <a href="">Edit</a>
             </div>
-          </div>
+            <!--add task later-->
+            <!-- <div class="flex-col">
+              <h5></h5>
+              <h2></h2>
+              <div class="flex-row"></div>
+            </div> -->
+          <!-- </div> -->
+          <% }) %>
         </div>
-
       </div>
-    </div>
+  
+      <div class="flex-row day-special-view"></div>
+      <div class="flex-row day-add-btns">
+        <a href="">Add Event</a>
+        <a href="">Add Tag</a>
+      </div>
+  
+  
+      <div class="flex-col day-events-view">
+        <h1>Event List</h1>
+        <div class="flex-col">
+          <div class="grid-2col events-list-header">
+            <h3>Time</h3>
+            <h3>Event</h3>
+          </div>
+          <% events.forEach(event => { %>
+            <div class="grid-2col day-events-view-list">
+              <div>
+                <% if (event.time) { %>
+                  <h3><% event.time %></h3>
+                <% } else { %>
+                  <h3>-</h3>
+                <% } %>
+              </div>
+              <div class="flex-col event-view">
+                <h4><%= event.name %></h4>
+                <p><%= event.description %></p>
+                <div class="flex-row">
+                  <a href="">View More</a>
+                  <a href="">Edit</a>
+                </div>              
+              </div>
+            </div> 
+            <% }) %> 
+        </div>
+      </div>
 
 
   </div>
-
+  <!--end of main day view-->
+  
 
 
 <%- include('../partials/footer')  %>

@@ -37,8 +37,6 @@ function show(req, res) {
             user: user._id,
             priority: 'TOP 3'
           }, function(err, event) {
-            console.log("EVENT FOUND", event);
-            console.log("EVENT FOUND", event[0].name);
             res.render('dashboard/show', {
               user: req.user,
               datePicked: req.query.date,

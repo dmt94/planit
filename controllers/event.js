@@ -9,8 +9,13 @@ module.exports = {
   // new: newDateEvent
 }
 
+/* SHOW DAY DETAILS */
 function show(req, res) {
-  res.render('date/view', {
+  console.log(req);
+  console.log("params", req.params);
+
+
+  res.render('date/show', {
     title: 'Day View',
     user: req.user
   })

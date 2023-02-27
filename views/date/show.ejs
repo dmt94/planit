@@ -52,11 +52,16 @@
           </div>
           <% events.forEach(event => { %>
             <div class="grid-2col day-events-view-list">
-              <div>
+              <div class="flex-col event-view event-time">
                 <% if (event.time) { %>
-                  <h3><% event.time %></h3>
+                  <div>
+                    <h3><%= event.time %></h3>
+                  </div>
                 <% } else { %>
-                  <h3>-</h3>
+                  <div>
+                    <h3>-</h3>
+                  </div>
+                  
                 <% } %>
               </div>
               <div class="flex-col event-view">

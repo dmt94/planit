@@ -16,6 +16,9 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 50vmin);
 }
+.grid-2col * {
+  text-align: center;
+}
 
 #calendar {
   border: 0.5px solid rgb(47, 44, 44);
@@ -303,10 +306,30 @@ form {
 }
 
 .day-events-view {
-  /* width: 80vmin; */
   margin-top: 3vmin;
-  background-color: #F3665D;
+  background-color: #292626;
   align-items: center;
+}
+
+.event-view {
+  background-color: rgba(255, 251, 245, 0.623);
+  align-items: flex-start;
+  padding: 2vmin;
+  margin: 2vmin;
+  color: black;
+}
+
+.event-time {
+  align-items: center;
+  background-color: rgba(250, 235, 215, 0);
+}
+
+.event-time div {
+  background-color: rgba(21, 20, 20, 0.275);
+  padding: 0.3vmin 3vmin;
+  border-radius: 4px;
+  color: white;
+  border: 1px solid rgb(164, 161, 180);
 }
 
 .event-view .flex-row {
@@ -318,6 +341,3 @@ form {
   margin-top: 2vmin;
 }
 
-.grid-2col * {
-  text-align: center;
-}

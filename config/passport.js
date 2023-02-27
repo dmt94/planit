@@ -1,7 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require('../models/user');
-const Date = require('../models/date');
+const DateModel = require('../models/date');
 
 passport.use(new GoogleStrategy(
   // Configuration object
@@ -19,8 +19,11 @@ passport.use(new GoogleStrategy(
         name: profile.displayName,
         googleId: profile.id,
         email: profile.emails[0].value,
-        avatar: profile.photos[0].value,
-        
+        avatar: profile.photos[0].value
+        // date: [{
+        //   type: Schema.Types.ObjectId,
+        //   ref: 'DateModel',
+        // }]
       });
 
       return cb(null, user);

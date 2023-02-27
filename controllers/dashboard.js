@@ -7,10 +7,11 @@ module.exports = {
 }
 
 function index(req, res) {
+  console.log(req.user)
   User.findOne(req.user, function(err, user) {
     res.render('dashboard/index', {
       title: 'Dashboard',
-      user: user,
+      // user: user,
     })
   })
 }
@@ -18,19 +19,18 @@ function index(req, res) {
 function show(req, res) {
   let date = req.query.date.split('-');
   let dateObj = new Date(date[0], Number(date[1]) - 1, date[2]);
-  
-  User.findOne({
-    'date.date': dateObj
-  }).then(function(user) {
-    if (!user) {
-      console.log("query", req.query);
-      
-      res.render('dashboard/show', {
-        user: req.user,
-        date: req.query.date,
-        title: 'Dashboard'
-      })
-    }
+
+  console.log("req.user:", req.user);
+
+  User.findOne(req.user, function(err, user) {
+    console.log("query", req.query);  
+    console.log("user", user);    
+    res.render('dashboard/show', {
+      user: req.user,
+      date: req.query.date,
+      title: 'Dashboard'
+    })
+    
   })
 }
 

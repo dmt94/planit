@@ -19,4 +19,4 @@ const dateSchema = new Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Date', dateSchema);
+module.exports = mongoose.model('DateModel', dateSchema);

@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const DateModel = require('../models/date');
+const Event = require('../models/event');
 
 module.exports = {
   create
@@ -13,5 +15,22 @@ function create(req, res) {
   console.log(dateObj);
   console.log(req.body);
 
-  
+  console.log(req.body.name)
+
+  User.findOne(req.user, function(err, user) {
+    console.log(user);
+    
+    Event.create(req.body, function(err, event) {
+      DateModel.create({
+        date: dateObj,
+        user: user._id
+      }, function(err, date) {
+        date.event.push(event);
+        user.date.push(date);
+        user.save(function(err) {
+          console.log(user);
+        })
+      })
+    })
+  })
 }

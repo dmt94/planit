@@ -23,14 +23,23 @@ function show(req, res) {
   let dateObj = new Date(date[0], Number(date[1]) - 1, date[2]);
 
   User.findOne(req.user, function(err, user) {
-    DateModel.findOne({date: dateObj, user: user._id}, function(err, date) {
-      if (!date) {        
-        res.render('dashboard/show', {
-          user: req.user,
-          date: req.query.date,
-          title: 'Dashboard'
-        })
-      }
+    DateModel.findOne({date: dateObj, user: user._id}, function(err, date) {              
+      res.render('dashboard/show', {
+        user: req.user,
+        datePicked: req.query.date,
+        title: 'Dashboard',
+        date: date
+      })
+      
+      
+      // if (!date) {        
+      //   res.render('dashboard/show', {
+      //     user: req.user,
+      //     date: req.query.date,
+      //     title: 'Dashboard'
+      //   })
+      // }
+
     })     
   })
 }

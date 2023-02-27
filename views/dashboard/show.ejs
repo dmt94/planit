@@ -7,11 +7,19 @@
   </div>
   <!--calendar view might keep getting rendered?-->
   <%- include('../partials/calendar') %>
+
   <div class="task-day-view flex-col">
-    <h3><%= date %></h3>
-    <div class=" flex-col">
-      <h4>Add Event</h4>
-      <a class="add-button" href="/dashboard/new?date=<%=date%>">+</a>
-    </div>
+    <% if (date) { %>
+      <div class="flex-col">
+        <h4><%= date.date %></h4>
+      </div>
+    <% } else { %>
+      <h3><%= datePicked %></h3>
+      <div class="flex-col">
+        <h4>Add Event</h4>
+        <a class="add-button" href="/dashboard/new?date=<%=datePicked%>">+</a>
+      </div>
+    <% } %>
   </div>
+
 </div>

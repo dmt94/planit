@@ -285,3 +285,14 @@ form {
   margin-left: 14vmin;
   color: white;
 }
+
+.main-day-view {
+  margin: 14vmin;
+  background-color: rgba(0, 0, 0, 0.273);
+  color: white;
+}
+
+.main-day-view a {
+  margin: 2vmin;
+  color:rgb(146, 144, 251);
+}

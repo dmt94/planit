@@ -73,13 +73,13 @@ const eventSchema = new Schema({
      default: false
    },
 //  task: [taskSchema],
-//  time: {
-//    type: String,
-//    default: function() {
-//      let presentDay = new Date();
-//      return presentDay.getHours() + ":" + today.getMinutes();
-//    }
-//  }
+  time: {
+    type: String,
+    default: function() {
+      let presentDay = new Date();
+      return presentDay.getHours() + ":" + today.getMinutes();
+    }
+  }
  }, {
    timestamps: true
  });

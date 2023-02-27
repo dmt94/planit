@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
+const user = require('../models/user');
 
 
 module.exports = {
@@ -10,10 +11,15 @@ module.exports = {
 }
 
 /* SHOW DAY DETAILS */
-function show(req, res) {
-  console.log(req);
+async function show(req, res) {
   console.log("params", req.params);
 
+  let DateWithEvents = await DateModel.findById(req.params.id).populate({
+    path: 'event'
+  });
+
+  let events = DateWithEvents.event;
+  console.log("ALL EVENTS", events);
 
   res.render('date/show', {
     title: 'Day View',
@@ -34,9 +40,9 @@ function create(req, res) {
           name: req.body.name,
           description: req.body.description,
           priority: req.body.priority,
-          specialEvent: req.body.specialEvent
-        }, function(err, event) {
-        
+          specialEvent: req.body.specialEvent,
+          time: req.body.time
+        }, function(err, event) {        
           DateModel.create({
             date: dateObj,
             user: user._id

@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const DateModel = require('../models/date');
+const Event = require('../models/event');
 
 
 module.exports = {
@@ -24,24 +25,31 @@ function show(req, res) {
 
   User.findOne(req.user, function(err, user) {
     DateModel.findOne({date: dateObj, user: user._id}, function(err, date) {
-      console.log("DATE??", date);
+      if (!date) {
         res.render('dashboard/show', {
           user: req.user,
           datePicked: req.query.date,
           title: 'Dashboard',
           date: date,
         })
-      })})
-    }             
+      } else {
+        if (date.event) {
+          Event.findById(date.event[0], function (err, event) {
+            res.render('dashboard/show', {
+              user: req.user,
+              datePicked: req.query.date,
+              title: 'Dashboard',
+              date: date,
+              event: event
+            })
+          })
+        }
+      }
+     })}
+    )}         
       
       
-      // if (!date) {        
-      //   res.render('dashboard/show', {
-      //     user: req.user,
-      //     date: req.query.date,
-      //     title: 'Dashboard'
-      //   })
-      // }
+   
 
     
 

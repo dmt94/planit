@@ -9,7 +9,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-image: linear-gradient(to right, rgb(38, 36, 36) , rgb(38, 37, 73)); 
+  background-image: linear-gradient(to left, rgb(62, 56, 71) , rgb(25, 24, 27)); 
 }
 
 .grid-2col {
@@ -28,26 +28,29 @@ body {
 }
 
 div#calendar.vanilla-calendar.vanilla-calendar_default {
-  background: rgba(216, 203, 228, 0.556);
+  background: rgba(17, 17, 17, 0.915);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.1px);
   -webkit-backdrop-filter: blur(7.1px);
-  border: 1px solid rgba(246, 235, 252, 0.764);
+  /* border: 1px solid rgba(246, 235, 252, 0.764); */
   width: 60vmin;
-  height: 60vmin;
+  height: 80vmin;
   max-width: none;
   display: flex;
   flex-direction: column;
 }
 
 .vanilla-calendar-week .vanilla-calendar-week__day {
-  color:rgb(20, 29, 88);
+  color:rgb(228, 254, 113);
   font-size: 19px;
-  background-color: rgba(60, 60, 107, 0.298);
+  background-color: rgba(19, 19, 20, 0.844);
   padding: 1vmin 3vmin;
   border-radius: 10px;
   margin: 1px 2px;
+  font-family: 'Raleway';
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 div#calendar.vanilla-calendar.vanilla-calendar_default 
@@ -60,23 +63,25 @@ div#calendar.vanilla-calendar.vanilla-calendar_default
   text-transform: uppercase;
   padding: 1vmin;
   font-family: 'Raleway';
+  margin: 3vmin 0;
 }
-.vanilla-calendar-day__btn {
+.vanilla-calendar-day__btn * {
   color: white;
 }
 
 .vanilla-calendar-days_selecting 
 .vanilla-calendar-day__btn {
-  padding: 3vmin;
+  padding: 5vmin;
   border-radius: 15px;
   font-size: 4vmin;
   margin: 1vmin;
+  font-weight: 800;
   background-color: rgba(240, 248, 255, 0);
   color: white;
 }
 .vanilla-calendar-days_selecting 
 .vanilla-calendar-day__btn:hover {
-  background-color: #3b3bf35b;
+  background-color: #f8f3b0e0;
   color: black;
 }
 
@@ -207,7 +212,7 @@ nav h2 {
 
 .sidebar a.round-icon,
 .sidebar div {
-  margin: 2vmin;
+  margin: 1vmin;
 }
 
 .sidebar a {
@@ -280,12 +285,49 @@ nav h2 {
   margin: 10px;
 }
 
-.add-button {
-  padding: 1vmin;
+.add-btn {
   text-decoration: none;
   color: black;
-  background-color: rgb(255, 165, 255);
-  margin: 4px;
+  background-color: rgb(92, 65, 246);
+  margin-right: 4vmin;
+  border-radius: 20px;
+  font-size: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+  width: 80px;
+  height: 70px;
+}
+
+.day-add-btns {
+  margin: 3vmin;
+}
+
+.add-btn:hover {
+  background-color: #5667FF;
+  color: white;
+}
+
+.button {
+  margin: 5vmin;
+}
+
+.button h4 {
+  margin-bottom: 2vmin;
+  font-weight: 500;
+  font-family: 'Raleway';
+  text-transform: uppercase;
+  font-size: 2vmin;
+  letter-spacing: 1px;
+}
+
+.add-tag-btn {
+  background-color: #a18f00;
+  color: black;
+}
+.add-tag-btn:hover {
+  background-color: rgb(190, 186, 46);
 }
 
 form {
@@ -293,22 +335,101 @@ form {
   color: white;
 }
 
+/* DAY VIEW */
+.date-div {
+  background-color:#5667FF;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  padding: 2vmin 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Raleway';
+  letter-spacing: 2px;
+}
+
 .main-day-view {
-  margin: 14vmin;
-  background-color: rgba(0, 0, 0, 0.273);
+  margin: 8vmin;
+  background-color: rgba(0, 0, 0, 0);
   color: white;
   width: 120vmin;
 }
 
 .main-day-view a {
   margin: 1vmin;
-  color:rgb(146, 144, 251);
+}
+
+.priority-view {
+  background-image: linear-gradient(to right, rgb(80, 78, 114) , rgb(38, 37, 73)); 
+  border-radius: 10px;
+}
+
+.day-priority-view {
+  background-color: #000000c6;
+  width: 100%;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding: 8vmin 0;
+}
+
+.priority-background {
+  background-color: rgba(248, 238, 226, 0.911);
+  margin: 2vmin;
+  border-radius: 10px;
+  color: black;
+  padding: 1vmin;
+}
+
+/* SPECIAL */
+.day-special-view {
+  width: 100%;
+  margin: 3vmin 0;
+}
+
+.special-view {
+  background-color: #141414;
+  padding: 4vmin;
+  border-radius: 30px;
+  box-shadow: rgba(110, 86, 130, 0.197) 0px 4px 12px;
+  gap: 2vmin;
+}
+
+.special-view * {
+  font-family: 'Raleway';
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 2.4vmin;
+}
+
+.special-view a {
+  color: rgb(232, 255, 116);
+  text-decoration: none;
+  font-size: 1.7vmin;
+}
+
+.special-view a:hover {
+  text-decoration: underline;
 }
 
 .day-events-view {
   margin-top: 3vmin;
-  background-color: #292626;
+  background-color: #141414;
   align-items: center;
+  padding: 5vmin;
+  border-radius: 9px;
+  border: 0.7px solid rgba(220, 207, 238, 0.7);
+}
+
+.day-events-view * {
+  font-family: 'Raleway';
+}
+
+.title {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  align-self: flex-start;
+  margin-bottom: 3vmin;
 }
 
 .event-view {
@@ -325,11 +446,11 @@ form {
 }
 
 .event-time div {
-  background-color: rgba(21, 20, 20, 0.275);
-  padding: 0.3vmin 3vmin;
+  background-color: rgba(70, 68, 68, 0.749);
+  padding: 1vmin 3vmin;
   border-radius: 4px;
   color: white;
-  border: 1px solid rgb(164, 161, 180);
+  border: 1px solid rgba(164, 161, 180, 0);
 }
 
 .event-view .flex-row {

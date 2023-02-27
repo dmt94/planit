@@ -18,17 +18,20 @@ function getData(arr, key, value) {
 async function show(req, res) {
   console.log("params", req.params);
 
-  let DateWithEvents = await DateModel.findById(req.params.id).populate({
+  let dateWithEvents = await DateModel.findById(req.params.id).populate({
     path: 'event'
   });
-  let events = DateWithEvents.event;
+  let date = dateWithEvents.date
+  let events = dateWithEvents.event;
   let topThree = getData(events, "priority", "TOP 3");
+
   
   res.render('date/show', {
     title: 'Day View',
     user: req.user,
     topThree: topThree,
-    events: events
+    events: events,
+    date: date.toDateString()
   })
 }
 

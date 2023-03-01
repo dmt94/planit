@@ -24,27 +24,24 @@ body {
   border: 0.5px solid rgb(47, 44, 44);
   border-radius: 22px;
   font-family: 'Inter', sans-serif;
-  margin: 12vmin;
+  margin: 40px 40px 40px 80px;
 }
 
 div#calendar.vanilla-calendar.vanilla-calendar_default {
-  background: rgba(17, 17, 17, 0.915);
+  background: rgba(17, 17, 17, 0.296);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.1px);
-  -webkit-backdrop-filter: blur(7.1px);
-  /* border: 1px solid rgba(246, 235, 252, 0.764); */
-  width: 60vmin;
-  height: 80vmin;
+  border: 1px solid rgba(246, 235, 252, 0);
   max-width: none;
   display: flex;
   flex-direction: column;
+  background-color: #030303;
+  height: 70vmin;
 }
 
 .vanilla-calendar-week .vanilla-calendar-week__day {
   color:rgb(228, 254, 113);
   font-size: 19px;
-  background-color: rgba(19, 19, 20, 0.844);
+  background-color: rgba(78, 78, 98, 0.401);
   padding: 1vmin 3vmin;
   border-radius: 10px;
   margin: 1px 2px;
@@ -71,20 +68,20 @@ div#calendar.vanilla-calendar.vanilla-calendar_default
 
 .vanilla-calendar-days_selecting 
 .vanilla-calendar-day__btn {
-  padding: 5vmin;
+  padding: 3vmin;
   border-radius: 15px;
   font-size: 4vmin;
   margin: 1vmin;
   font-weight: 800;
   background-color: rgba(240, 248, 255, 0);
   color: white;
+  margin-top: 1.5vmin;
 }
 .vanilla-calendar-days_selecting 
 .vanilla-calendar-day__btn:hover {
-  background-color: #f8f3b0e0;
+  background-color: #f8fd6ce0;
   color: black;
 }
-
 
 /* UTILITIES */
 .flex-col {
@@ -285,6 +282,17 @@ nav h2 {
   margin: 10px;
 }
 
+.task-day-view a {
+  color: rgb(12, 12, 50);
+  background-color: #a4acf6;
+  padding: 2vmin;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.task-day-view a:hover {
+  opacity: 0.8;
+}
+
 .add-btn {
   text-decoration: none;
   color: black;
@@ -302,6 +310,25 @@ nav h2 {
 
 .day-add-btns {
   margin: 3vmin;
+  background-color: #141414;
+}
+
+.vanilla-calendar-arrow.vanilla-calendar-arrow_prev::before,
+.vanilla-calendar-arrow.vanilla-calendar-arrow_prev::after,
+.vanilla-calendar-arrow.vanilla-calendar-arrow_next::before,
+.vanilla-calendar-arrow.vanilla-calendar-arrow_next::after {
+  background-color: white;
+  height: 4px;
+}
+
+.vanilla-calendar-days > .vanilla-calendar-day > .vanilla-calendar-day__btn_prev {
+  color: rgba(95, 93, 102, 0.764);
+}
+
+.flex-row .view-edit-btn {
+  padding: 0;
+  margin: 0 3vmin 0 0;
+  background-color: #00000000;
 }
 
 .add-btn:hover {
@@ -356,6 +383,18 @@ form {
 
 .main-day-view a {
   margin: 1vmin;
+}
+
+.priority-preview {
+  background-color: #f5e570;
+  color: black;
+  border-radius: 10px;
+}
+
+.priority-name-preview {
+  font-size: 4vmin;
+  font-family: 'Raleway';
+  letter-spacing: 1px;
 }
 
 .priority-view {

@@ -1,6 +1,8 @@
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
+// var requirejs = require('requirejs');
+
 
 module.exports = {
   index,
@@ -9,8 +11,8 @@ module.exports = {
 }
 
 function index(req, res) {
-  console.log(req.user)
   User.findOne(req.user, function(err, user) {
+    
     res.render('dashboard/index', {
       title: 'Dashboard',
       user: user,
@@ -21,6 +23,11 @@ function index(req, res) {
 function show(req, res) {
   let date = req.query.date.split('-');
   let dateObj = new Date(date[0], Number(date[1]) - 1, date[2]);
+  console.log(dateObj);
+  let monthClicked = dateObj.getMonth();
+  let yearClicked = dateObj.getFullYear();
+  
+  console.log('month clicked', monthClicked);
 
   User.findOne(req.user, function(err, user) {
     DateModel.findOne({date: dateObj, user: user._id}, async function(err, date) {
@@ -29,7 +36,7 @@ function show(req, res) {
           user: req.user,
           datePicked: req.query.date,
           title: 'Dashboard',
-          date: date,
+          date: date
         })
       } else {
         if (date.event) {
@@ -42,7 +49,8 @@ function show(req, res) {
               datePicked: req.query.date,
               title: 'Dashboard',
               date: date,
-              events: DateWithEvents.event
+              events: DateWithEvents.event,
+              monthClicked: monthClicked
             })                    
         }
       }
@@ -50,7 +58,7 @@ function show(req, res) {
     )}         
       
 function newDateEvent(req, res) {
-  console.log(req.query.date);
+
   res.render('dashboard/new', {
     user: req.user,
     date: req.query.date,

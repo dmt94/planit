@@ -7,34 +7,44 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 </script>
+<script defer type="module" src="/javascripts/calendar.mjs"></script>
   <title>PlanIt</title>
   <!--calendar script-->
-    <% if (user) { %>
-      <link href="
-      https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.4.0/build/vanilla-calendar.min.css
-      " rel="stylesheet">
-      <script src="
-      https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.4.0/build/vanilla-calendar.min.js
-      "></script>
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const calendar = new VanillaCalendar('#calendar', {
-            actions: {
-              clickDay(event, dates) {
-                console.log(event.target);
-                console.log(dates);
-                event.target.setAttribute("type", "submit");
-                $.get(`/dashboard/show?date=${dates}`, function(data, status) { 
-                  event.preventDefault();
-                  window.location = `/dashboard/show?date=${dates}`;   
-                 })
-              }
-            }
-          });
-          calendar.init();
-        });
-      </script>
-    <% } %>
+  <% if (user) { %>
+    <link href="
+    https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.4.0/build/vanilla-calendar.min.css
+    " rel="stylesheet">
+    <script src="
+    https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.4.0/build/vanilla-calendar.min.js
+    "></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', (e) => {
+      const calendar = new VanillaCalendar('#calendar', {
+      actions: {
+        clickDay(event, dates) {              
+          console.log(event.target);
+          console.log(dates);
+
+          event.target.setAttribute("type", "submit");
+          $.get(`/dashboard/show?date=${dates}`, function(data, status) { 
+
+            window.location = `/dashboard/show?date=${dates}`;   
+          })
+        }
+      },
+      settings: {
+        selected: {
+          month: document.URL.split('date').length === 1 ? new Date().getMonth() : document.URL.split('date')[1].split('-')[1] - 1,
+          year: document.URL.split('date').length === 1 ? new Date().getFullYear() : document.URL.split('date')[1].split('-')[0].slice(1)
+        }
+      }
+    });
+    calendar.init();
+    });
+    </script>
+
+<% } %>
   <!--end of calendar script-->
 </head>
 <body>
@@ -44,6 +54,7 @@
         <div class="flex-row">
           <img src="https://cdn-icons-png.flaticon.com/512/447/447144.png" alt="planit avatar" class="link-icons">
           <h2>PLANIT</h2>
+          <button id="render-calendar">Render Calendar</button>
         </div>
         <div>
           <!--Filter through tasks-->
@@ -56,3 +67,9 @@
       </nav>
     <% } %>
   </div>
+
+
+
+
+  
+

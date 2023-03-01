@@ -14,6 +14,7 @@
         <h3><%= date.date.toLocaleDateString() %></h3>
         <h5>Priorities:</h5>
         <% events.forEach(event => { %>
+          <% if (event.priority === 'TOP 3') { %>
           <div class="flex-row priority-preview">
             <div></div>
             <div class="flex-col">
@@ -23,7 +24,8 @@
                 <a class="view-edit-btn" href="/day/<%=date._id%>/event/edit">Edit</a>
               </div>
             </div>
-          </div>          
+          </div> 
+          <% } %>         
         <% }) %>
         <a class="add-button" href="/day/<%=date._id%>">View details</a>
       </div>

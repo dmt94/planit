@@ -1,0 +1,34 @@
+<label for="">Event Name:</label>
+<input type="text" name="name">
+
+<label for="">Description:</label>
+<textarea name="description"></textarea>
+
+<!-- <label for="">Date:</label>
+<input type="datetime-local" name="date"> -->
+
+<label for="">Priority:</label>
+<select name="priority">
+  <option value="TOP 3">TOP 3</option>
+  <option value="HIGH">HIGH</option>
+  <option value="MEDIUM">MEDIUM</option>
+  <option value="LOW">LOW</option>
+</select>
+
+<p>Special Event?</p>
+<div class="flex-row">
+  <div class="flex-col">
+    <input type="radio" id="special-event" name="specialEvent" value="true" />
+    <label for="special-event">Yes</label>
+  </div>
+  <div class="flex-col">
+    <input type="radio" id="not-special" name="specialEvent" value="false" />
+    <label for="not-special">No</label>
+  </div>
+</div>
+
+<p>Time</p>
+<div>
+  <input type="time" name="time">
+</div>
+<input type="submit" value="Add Date Event">

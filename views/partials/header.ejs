@@ -23,12 +23,8 @@
       const calendar = new VanillaCalendar('#calendar', {
       actions: {
         clickDay(event, dates) {              
-          console.log(event.target);
-          console.log(dates);
-
           event.target.setAttribute("type", "submit");
           $.get(`/dashboard/show?date=${dates}`, function(data, status) { 
-
             window.location = `/dashboard/show?date=${dates}`;   
           })
         }

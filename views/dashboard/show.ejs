@@ -6,7 +6,6 @@
       <%- include('../partials/navbar') %>
     <% } %>
   </div>
-  <!--calendar view might keep getting rendered?-->
   <%- include('../partials/calendar') %>
 
   <div class="task-day-view flex-col">
@@ -26,7 +25,7 @@
             </div>
           </div>          
         <% }) %>
-        <a class="add-button" href="/event/date/<%=date._id%>">View details</a>
+        <a class="add-button" href="/day/<%=date._id%>">View details</a>
       </div>
     <% } else { %>
       <h3><%= datePicked %></h3>

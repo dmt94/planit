@@ -23,7 +23,7 @@
               <p><%= priority.description %></p>
               <% if (priority.time) { %>
                 <h4>Time</h4>
-                <h5><%= priority.time %></h5>
+                <h5><%= getTime(priority.time) %></h5>
               <% } %>
               <div class="flex-row">
                 <a href="">View</a>

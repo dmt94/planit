@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const ensureLoggedIn = require('../config/ensureLoggedIn');
-const eventCtrl = require('../controllers/event');
+const dayCtrl = require('../controllers/day');
 
 /* GET users listing. */
-router.post('/date/new', ensureLoggedIn, eventCtrl.create);
-router.get('/date/:id', ensureLoggedIn, eventCtrl.show);
+router.post('/new', ensureLoggedIn, dayCtrl.create);
+router.get('/:id', ensureLoggedIn, dayCtrl.show);
 
 module.exports = router;

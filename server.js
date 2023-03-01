@@ -44,7 +44,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-
 app.use('/', indexRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/day', dayRouter);

@@ -33,17 +33,18 @@ function show(req, res) {
           date: date
         })
       } else {
-        if (date.event) {
+        if (date.event) {    
           let DateWithEvents = await DateModel.findById(date._id).populate({
             path: 'event',
             priority: 'TOP 3'
           });
+        
             res.render('dashboard/show', {
               user: req.user,
               datePicked: req.query.date,
               title: 'Dashboard',
               date: date,
-              events: DateWithEvents.event              
+              events: DateWithEvents.event,
             })                    
         }
       }

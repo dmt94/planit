@@ -24,6 +24,27 @@ async function show(req, res) {
   let topThree = getData(events, "priority", "TOP 3");
 
   console.log("date with events", dateWithEvents);
+  function getTime(time = dateWithEvents.event[0].time) {
+    console.log('EVENT', dateWithEvents.event)
+    console.log('FIRST EVENT', dateWithEvents.event[0])
+    console.log('TIME', dateWithEvents.event[0].time)
+    let timeSplit = time.split(':');
+    let meridian;
+    let hours = timeSplit[0];
+    let minutes = timeSplit[1];
+    if (hours > 12) {
+      meridian = 'PM';
+      hours -= 12;
+    } else if (hours < 12) {
+      meridian = 'AM';
+      if (hours == 0) {
+        hours = 12;
+      }
+    } else {
+      meridian = 'PM';
+    }   
+    return `${hours}:${minutes} ${meridian}`;
+  }
   
   res.render('date/show', {
     title: 'Day View',
@@ -31,7 +52,7 @@ async function show(req, res) {
     topThree: topThree,
     events: events,
     date: date.toDateString(),
-    
+    getTime: getTime    
   })
 }
 

@@ -74,11 +74,7 @@ const eventSchema = new Schema({
    },
 //  task: [taskSchema],
   time: {
-    type: String,
-    default: function() {
-      let presentDay = new Date();
-      return presentDay.getHours() + ":" + today.getMinutes();
-    }
+    type: String
   }
  }, {
    timestamps: true

@@ -16,8 +16,6 @@ function getData(arr, key, value) {
 
 /* SHOW DAY DETAILS */
 async function show(req, res) {
-  console.log("params", req.params);
-
   let dateWithEvents = await DateModel.findById(req.params.id).populate({
     path: 'event'
   });
@@ -25,13 +23,15 @@ async function show(req, res) {
   let events = dateWithEvents.event;
   let topThree = getData(events, "priority", "TOP 3");
 
+  console.log("date with events", dateWithEvents);
   
   res.render('date/show', {
     title: 'Day View',
     user: req.user,
     topThree: topThree,
     events: events,
-    date: date.toDateString()
+    date: date.toDateString(),
+    
   })
 }
 
@@ -59,7 +59,7 @@ function create(req, res) {
             date.save(function (err) {
               user.date.push(date);
               user.save(function(err) {
-                res.redirect(`/dashboard`);
+                res.redirect(`/dashboard/show?date=${req.query.date}`);
               })
             })
           })

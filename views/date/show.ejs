@@ -44,10 +44,14 @@
       <div class="flex-col day-special-view">
         <h1 class="title">Special</h1>
         <div class="grid-3col">
-          <div class="flex-col special-view">
-            <h3>Special Event here</h3>
-            <a href="">View more</a>
-          </div>
+          <% events.forEach(event => { %>
+            <% if (event.specialEvent) { %>
+            <div class="flex-col special-view">              
+              <h3><%= event.name %> </h3>
+              <a href="">View more</a>
+            </div>
+            <% } %>
+          <% }) %>
         </div>
       </div>
 

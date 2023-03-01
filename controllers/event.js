@@ -9,14 +9,10 @@ module.exports = {
 
 function create(req, res) {
   console.log(req.params);
-  let eventId = req.params.id;
-
-  let date = req.query.date.split('-');
-  let dateObj = new Date(date[0], Number(date[1]) - 1, date[2]);
 
   User.findOne(req.user, function(err, user) {
     console.log("USER found:", user);
-    DateModel.findOne({date: dateObj, user: user._id}, function(err, date) {
+    DateModel.findById(req.params.id, function(err, date) {
         Event.create({
           user: user._id,
           name: req.body.name,
@@ -24,22 +20,14 @@ function create(req, res) {
           priority: req.body.priority,
           specialEvent: req.body.specialEvent,
           time: req.body.time
-        }, function(err, event) {        
-          DateModel.create({
-            date: dateObj,
-            user: user._id
-          }, function(err, date) {
-            date.event.push(event._id);
-            date.save(function (err) {
-              user.date.push(date);
-              user.save(function(err) {
-                // res.redirect(`/day/${req.query.id}`);
-              })
-            })
-          })
+        }, function(err, event) {
+          date.event.push(event._id);
+          date.save(function (err) {
+            res.redirect(`/day/${req.params.id}`)
+          })})
         })
-    })})
-}
+      })
+    }
 
 function newEvent(req, res) {
   console.log(req.params.id)

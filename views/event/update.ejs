@@ -5,9 +5,10 @@
     <% } %>
     <div>
       <!--create POST request to create event data-->
+      <h1><%= title %></h1>
       <form class="flex-col" action="/day/<%=dateId%>/event" method="POST">
         <%- include('../partials/eventForm')  %>
-        <input type="submit" value="Add New Event">
+        <input type="submit" value="Edit Event">
       </form>
     </div>
 </div>

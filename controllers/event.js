@@ -4,7 +4,8 @@ const Event = require('../models/event');
 
 module.exports = {
   create,
-  new: newEvent
+  new: newEvent,
+  newEdit
 }
 
 function create(req, res) {
@@ -30,10 +31,18 @@ function create(req, res) {
     }
 
 function newEvent(req, res) {
-  console.log(req.params.id)
   res.render('event/new', {
     user: req.user,
     dateId: req.params.id,
     title: 'Add New Event',
+  })
+}
+
+function newEdit(req, res) {
+  console.log("REQ PARAMS", req.params);
+  res.render('event/update', {
+    user: req.user,
+    title: 'Edit Event',
+    dateId: req.params.id
   })
 }

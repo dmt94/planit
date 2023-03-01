@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<div class="dashboard-container flex-row">
+    <% if (user) { %>
+      <%- include('../partials/navbar') %>
+    <% } %>
+    <div>
+      <!--create POST request to create event data-->
+      <form class="flex-col" action="/day/new?date=" method="POST">
+        <%- include('../partials/eventForm')  %>
+      </form>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

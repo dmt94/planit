@@ -7,7 +7,6 @@ const user = require('../models/user');
 module.exports = {
   create,
   show
-  // new: newDateEvent
 }
 
 function getData(arr, key, value) {
@@ -50,7 +49,8 @@ async function show(req, res) {
     topThree: topThree,
     events: events,
     date: date.toDateString(),
-    getTime: getTime    
+    getTime: getTime,
+    dateObj: dateWithEvents    
   })
 }
 

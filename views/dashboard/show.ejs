@@ -10,10 +10,13 @@
     <div class="flex-col dashboard-date-input-div">
       <h4>Input Date</h4>
       <form 
-        action=""
+        action="/dashboard/show?date=input"
         method="GET"
+        class="flex-col"
         >
-        <input type="date" name="" class="dashboard-date-input">
+        <input type="date" name="date" class="dashboard-date-input" id="date-value">
+        <input type="submit" value="Search" id="submit-btn">
+        
       </form>      
     </div>
     <%- include('../partials/calendar') %>

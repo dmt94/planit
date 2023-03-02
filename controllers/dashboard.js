@@ -22,7 +22,7 @@ function index(req, res) {
 function show(req, res) {
   let date = req.query.date.split('-');
   let dateObj = new Date(date[0], Number(date[1]) - 1, date[2]);
-
+  console.log("GET REQUEST FOR PREVIEW: ", req);
   User.findOne(req.user, function(err, user) {
     DateModel.findOne({date: dateObj, user: user._id}, async function(err, date) {
       if (!date) {

@@ -22,13 +22,10 @@
       document.addEventListener('DOMContentLoaded', (e) => {
       const calendar = new VanillaCalendar('#calendar', {
       actions: {
-        clickYear(event, year) {
-          null
-        },
         clickDay(event, dates) {              
           event.target.setAttribute("type", "submit");
-          $.get(`/dashboard/show?date=${dates}`, function(data, status) { 
-            
+          console.log(dates);
+          $.get(`/dashboard/show?date=${dates}`, function(data, status) {             
             window.location = `/dashboard/show?date=${dates}`;   
           })
         }

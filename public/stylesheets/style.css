@@ -31,14 +31,19 @@ body {
   background-color: rgba(0, 0, 0, 0.401);
   color: white;
   border-radius: 10px;
-  padding: 1vmin;
 }
 .dashboard-date-input-div form {
   margin: 1vmin;
 }
 .dashboard-date-input-div h4 {
-  margin: 1vmin;
   font-weight: 500;
+  background-color: black;
+  padding: 1.8vmin 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1vmin;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 .dashboard-date-input {
   background-color: #a3a1ac46;

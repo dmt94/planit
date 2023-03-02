@@ -12,7 +12,7 @@
       >
       <button class="delete-btn" type="submit">Delete</button>
       </form>
-      <form class="flex-col original-form" action="/day/<%=dateId%>/event" method="POST">
+      <form class="flex-col original-form" action="/day/<%=dateId%>/event?_method=PUT&eventId=<%=eventId%>" method="POST">
         <div class="form-header new-event-header flex-col">
           <h5>edit</h5>
           <h1><%= title %></h1>

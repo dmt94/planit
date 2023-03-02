@@ -1,22 +1,41 @@
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
+const { update } = require('../models/user');
 
 module.exports = {
   create,
   new: newEvent,
   newEdit,
-  delete: deleteEvent
+  delete: deleteEvent,
+  update: updateEvent
+}
+
+function updateEvent(req, res) {
+  console.log("ID",req.query.eventId);
+  let filter = {
+    _id: req.query.eventId
+  };
+  let update = {
+    name: req.body.name,
+    description: req.body.description,
+    priority: req.body.priority,
+    specialEvent: req.body.specialEvent,
+    time: req.body.time
+  };
+  Event.findOneAndUpdate(filter, update, function(err, event) {
+    event.save();
+  });
+
+  res.redirect(`/day/${req.params.id}`)
 }
 
 function create(req, res) {
   for (let prop in req.body) {
     if (req.body[prop] === '') delete req.body[prop];
   }
-
   User.findOne(req.user, function(err, user) {
-    console.log("USER found:", user);
-    
+    console.log("USER found:", user);    
     DateModel.findById(req.params.id, function(err, date) {
         Event.create({
           user: user._id,

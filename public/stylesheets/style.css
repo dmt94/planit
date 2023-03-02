@@ -528,6 +528,7 @@ form {
   padding: 1vmin;
   border-radius: 3px;
   border: none;
+  margin-bottom: 2vmin;
 }
 
 textarea, input {
@@ -555,8 +556,10 @@ textarea, input {
   font-size: 2vmin;
 }
 
-.orginal-form label {
+label {
   margin: 1vmin;
+  font-size: 20px;
+  letter-spacing: 1px;
 }
 
 .original-form input {
@@ -567,8 +570,28 @@ textarea, input {
   margin: 2vmin;
 }
 input[type="submit"] {
-  background-color: #5667FF;
+  background-color: #3042dc;
   margin: 5vmin 0;
+}
+
+.cancel-btn {
+  background-color: #d8ff56d6;
+  margin: 5vmin 3vmin;
+  padding: 1vmin;
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.cancel-btn:hover {
+  background-color: #25252386;
+  color: #c6ff0c;
+}
+
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(200, 199, 236, 0.852);
 }
 
 input[type="submit"]:hover {

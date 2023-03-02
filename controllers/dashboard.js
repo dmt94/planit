@@ -14,7 +14,7 @@ function index(req, res) {
   User.findOne(req.user, function(err, user) {    
     res.render('dashboard/index', {
       title: 'Dashboard',
-      user: user,
+      user: user
     })
   })
 }
@@ -38,7 +38,6 @@ function show(req, res) {
             path: 'event',
             priority: 'TOP 3'
           });
-        
             res.render('dashboard/show', {
               user: req.user,
               datePicked: req.query.date,
@@ -58,5 +57,7 @@ function newDateEvent(req, res) {
     user: req.user,
     date: req.query.date,
     title: 'Dashboard',
+    event: ""
+    
   })
 }

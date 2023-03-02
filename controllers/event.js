@@ -43,21 +43,22 @@ function newEvent(req, res) {
     user: req.user,
     dateId: req.params.id,
     title: 'Add New Event',
+    event: ""
   })
 }
 
 function newEdit(req, res) {
-  // console.log("REQ PARAMS", req.params);
-  // console.log("QUERY", req.query)
   let eventId = req.query.eventId;
   let dateId = req.params.id;
+  
   Event.findById(eventId, function(err, event) {
-
+    console.log("name", event.name);
     res.render('event/update', {
       user: req.user,
       title: event.name,
       dateId,
-      eventId
+      eventId,
+      event
     })
   })
 }

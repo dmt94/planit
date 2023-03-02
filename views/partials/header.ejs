@@ -25,6 +25,7 @@
         clickDay(event, dates) {              
           event.target.setAttribute("type", "submit");
           $.get(`/dashboard/show?date=${dates}`, function(data, status) { 
+            
             window.location = `/dashboard/show?date=${dates}`;   
           })
         }

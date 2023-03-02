@@ -17,9 +17,11 @@
           <h5>edit</h5>
           <h1><%= title %></h1>
         </div>
-
         <%- include('../partials/eventForm')  %>
-        <input type="submit" value="Edit Event">
+        <div class="flex-row">
+          <a class="cancel-btn" href="/day/<%=dateId%>">Cancel Edit</a>
+          <input type="submit" value="Edit Event">
+        </div>
       </form>
 
     </div>

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 * {
-  margin: 0;
-  padding: 0;
+  margin:0;
+  padding:0;
 }
 
 body {
@@ -17,8 +17,43 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 50vmin);
 }
+.grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 40vmin);
+  gap: 2vmin;
+  align-items: center;
+  text-align: center;
+}
 .grid-2col * {
   text-align: center;
+}
+.dashboard-date-input-div {
+  background-color: rgba(0, 0, 0, 0.401);
+  color: white;
+  border-radius: 10px;
+  padding: 1vmin;
+}
+.dashboard-date-input-div form {
+  margin: 1vmin;
+}
+.dashboard-date-input-div h4 {
+  margin: 1vmin;
+  font-weight: 500;
+}
+.dashboard-date-input {
+  background-color: #a3a1ac46;
+  border-radius: 10px;
+  padding: 1vmin;
+  color: white;
+  border: none;
+  font-weight: 500;
+  box-shadow: rgba(29, 29, 32, 0.811) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.dashboard-date-input * {
+  color: white;
+}
+input:hover {
+  cursor: pointer;
 }
 
 #calendar {
@@ -35,7 +70,7 @@ body {
 
 div#calendar.vanilla-calendar.vanilla-calendar_default {
   border-radius: 16px;
-  border: 1px solid rgba(246, 235, 252, 0);
+  border: 1px solid #f6ebfc00;
   max-width: none;
   display: flex;
   flex-direction: column;
@@ -58,7 +93,7 @@ div#calendar.vanilla-calendar.vanilla-calendar_default
 .vanilla-calendar-month, 
 div#calendar.vanilla-calendar.vanilla-calendar_default 
 .vanilla-calendar-year {
-  color: rgb(229, 247, 177);
+  color: rgb(233, 249, 252);
   font-size: 25px;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -362,7 +397,7 @@ nav h2 {
 .add-btn {
   text-decoration: none;
   color: black;
-  background-color: rgb(92, 65, 246);
+  background-color: rgb(152, 137, 237);
   margin-right: 4vmin;
   border-radius: 20px;
   font-size: 80px;
@@ -404,6 +439,10 @@ nav h2 {
 
 .button {
   margin: 5vmin;
+}
+
+#submit-btn {
+  margin: 2vmin;
 }
 
 .button h4 {
@@ -636,7 +675,12 @@ label {
 }
 input[type="submit"] {
   background-color: #3042dc;
-  margin: 5vmin 0;
+  margin: 3vmin 0;
+  color: white;
+  border: none;
+  padding: 1vmin;
+  font-size: 16px;
+
 }
 
 .cancel-btn {

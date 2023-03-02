@@ -6,7 +6,18 @@
       <%- include('../partials/navbar') %>
     <% } %>
   </div>
-  <%- include('../partials/calendar') %>
+  <div class="flex-col">
+    <div class="flex-col dashboard-date-input-div">
+      <h4>Input Date</h4>
+      <form 
+        action=""
+        method="GET"
+        >
+        <input type="date" name="" class="dashboard-date-input">
+      </form>      
+    </div>
+    <%- include('../partials/calendar') %>
+  </div>
 
   <div class="task-day-view flex-col">
     <% if (date) { %>

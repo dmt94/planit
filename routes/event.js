@@ -3,7 +3,7 @@ const router = express.Router();
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 const eventCtrl = require('../controllers/event');
 
-/* GET users listing. */
+
 router.get('/day/:id/event/new', ensureLoggedIn, eventCtrl.new);
 router.post('/day/:id/event', ensureLoggedIn, eventCtrl.create);
 
@@ -12,7 +12,7 @@ router.post('/day/:id/event', ensureLoggedIn, eventCtrl.create);
 router.get('/day/:id/event/edit', ensureLoggedIn, eventCtrl.newEdit);
 // router.put('/day/:id/event', eventCtrl.update);
 
-// router.delete('/day/:id/event', eventCtrl.delete);
+router.delete('/day/:id/event', ensureLoggedIn, eventCtrl.delete);
 
 module.exports = router;
 

@@ -3,9 +3,10 @@
     <% if (user) { %>
       <%- include('../partials/navbar') %>
     <% } %>
-    <div>
+    <div class="new-event-form-wrap form-wrap">
       <!--create POST request to create event data-->
-      <form class="flex-col" action="/day/<%=dateId%>/event" method="POST">
+      <form class="flex-col original-form" action="/day/<%=dateId%>/event" method="POST">
+        <div class="form-header new-event-header"><h2>Create New Event</h2></div>
         <%- include('../partials/eventForm')  %>
         <input type="submit" value="Add New Event">
       </form>

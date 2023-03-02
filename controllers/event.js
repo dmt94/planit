@@ -5,14 +5,18 @@ const Event = require('../models/event');
 module.exports = {
   create,
   new: newEvent,
-  newEdit
+  newEdit,
+  delete: deleteEvent
 }
 
 function create(req, res) {
-  console.log(req.params);
+  for (let prop in req.body) {
+    if (req.body[prop] === '') delete req.body[prop];
+  }
 
   User.findOne(req.user, function(err, user) {
     console.log("USER found:", user);
+    
     DateModel.findById(req.params.id, function(err, date) {
         Event.create({
           user: user._id,
@@ -22,6 +26,10 @@ function create(req, res) {
           specialEvent: req.body.specialEvent,
           time: req.body.time
         }, function(err, event) {
+          if (err) {
+            console.log(err);
+            return res.redirect(`/day/${req.params.id}/event/new`)
+          };
           date.event.push(event._id);
           date.save(function (err) {
             res.redirect(`/day/${req.params.id}`)
@@ -39,10 +47,25 @@ function newEvent(req, res) {
 }
 
 function newEdit(req, res) {
-  console.log("REQ PARAMS", req.params);
-  res.render('event/update', {
-    user: req.user,
-    title: 'Edit Event',
-    dateId: req.params.id
+  // console.log("REQ PARAMS", req.params);
+  // console.log("QUERY", req.query)
+  let eventId = req.query.eventId;
+  let dateId = req.params.id;
+  Event.findById(eventId, function(err, event) {
+
+    res.render('event/update', {
+      user: req.user,
+      title: event.name,
+      dateId,
+      eventId
+    })
+  })
+}
+
+function deleteEvent(req, res) {
+  console.log(req.query);
+  console.log(req);
+  Event.findByIdAndDelete(req.query.eventId, function(err, event) {
+    res.redirect(`/day/${req.params.id}`)
   })
 }

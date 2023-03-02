@@ -10,7 +10,7 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: rgb(63,94,251);
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(43,40,41,1) 100%);
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgb(23, 9, 36) 100%);
 }
 
 .grid-2col {
@@ -22,31 +22,34 @@ body {
 }
 
 #calendar {
-  border: 0.5px solid rgb(47, 44, 44);
+  border: 0.5px solid rgba(245, 245, 245, 0.053);
   border-radius: 22px;
   font-family: 'Inter', sans-serif;
   margin: 40px 40px 40px 80px;
+  box-shadow: rgba(0, 0, 0, 0.464) 1.95px 1.95px 2.6px;
+  font-family: 'Raleway';
+}
+.vanilla-calendar_month {
+  background-color: #141414;
 }
 
 div#calendar.vanilla-calendar.vanilla-calendar_default {
-  background: rgba(17, 17, 17, 0.296);
   border-radius: 16px;
   border: 1px solid rgba(246, 235, 252, 0);
   max-width: none;
   display: flex;
   flex-direction: column;
-  background-color: #030303;
+  background-color: #030303c7;
   height: 70vmin;
 }
 
 .vanilla-calendar-week .vanilla-calendar-week__day {
   color:rgb(228, 254, 113);
   font-size: 19px;
-  background-color: rgba(78, 78, 98, 0.401);
+  background-color: rgba(48, 48, 95, 0.401);
   padding: 1vmin 3vmin;
   border-radius: 10px;
   margin: 1px 2px;
-  font-family: 'Raleway';
   font-weight: 500;
   letter-spacing: 1px;
 }
@@ -55,7 +58,7 @@ div#calendar.vanilla-calendar.vanilla-calendar_default
 .vanilla-calendar-month, 
 div#calendar.vanilla-calendar.vanilla-calendar_default 
 .vanilla-calendar-year {
-  color: white;
+  color: rgb(229, 247, 177);
   font-size: 25px;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -63,15 +66,32 @@ div#calendar.vanilla-calendar.vanilla-calendar_default
   font-family: 'Raleway';
   margin: 3vmin 0;
 }
+
 .vanilla-calendar-day__btn * {
   color: white;
+}
+
+div#calendar.vanilla-calendar.vanilla-calendar_default 
+.vanilla-calendar-month:hover {
+  color: rgb(217, 234, 255);
+}
+div#calendar.vanilla-calendar.vanilla-calendar_default 
+.vanilla-calendar-year:hover {
+  color: rgb(110, 138, 252);
+}
+
+.vanilla-calendar-header .vanilla-calendar-header__content * {
+  font-size: 4vmin;
+  margin: 2vmin 1vmin;
+  color: white;
+  
 }
 
 .vanilla-calendar-days_selecting 
 .vanilla-calendar-day__btn {
   padding: 3vmin;
   border-radius: 15px;
-  font-size: 4vmin;
+  font-size: 3vmin;
   margin: 1vmin;
   font-weight: 800;
   background-color: rgba(240, 248, 255, 0);
@@ -80,8 +100,53 @@ div#calendar.vanilla-calendar.vanilla-calendar_default
 }
 .vanilla-calendar-days_selecting 
 .vanilla-calendar-day__btn:hover {
-  background-color: #f8fd6ce0;
-  color: black;
+  background-color: #2b32416d;
+  color: rgb(255, 255, 174);
+}
+
+/* SELECTING MONTHS */
+.vanilla-calendar-months.vanilla-calendar-months_selecting,
+.vanilla-calendar-years.vanilla-calendar-years_selecting {
+  background-color: #0e0e4500;
+  font-size: 'Inter';
+}
+
+.vanilla-calendar.vanilla-calendar_month,
+.vanilla-calendar.vanilla-calendar_year {
+  background-color: #111325b0;
+}
+.vanilla-calendar-months.vanilla-calendar-months_selecting .vanilla-calendar-months__month,
+.vanilla-calendar-years.vanilla-calendar-years_selecting .vanilla-calendar-years__year {
+  background-color: #0e0e0e7d;
+  color: rgb(200, 215, 252);
+  font-size: 2vmin;
+  width: 10vmin;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.vanilla-calendar-months.vanilla-calendar-months_selecting 
+.vanilla-calendar-months__month:hover,
+.vanilla-calendar-years.vanilla-calendar-years_selecting 
+.vanilla-calendar-years__year:hover {
+  background-color: #ddddffee;
+  color: rgba(20, 19, 19, 0.969);
+}
+
+.vanilla-calendar-header__content > 
+.vanilla-calendar-month, 
+.vanilla-calendar-header__content >
+.vanilla-calendar-year {
+  color: rgb(245, 239, 218);
+  font-family: 'Raleway';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.vanilla-calendar-header__content > 
+.vanilla-calendar-month:hover, 
+.vanilla-calendar-header__content >
+.vanilla-calendar-year:hover {
+  color:rgba(203, 207, 255, 0.881);
 }
 
 /* UTILITIES */
@@ -113,7 +178,7 @@ div#calendar.vanilla-calendar.vanilla-calendar_default
   border-radius: 50px;
   width: 10vmin;
   height: 10vmin;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: rgba(0, 0, 0, 0.491) 1.95px 1.95px 2.6px;
   justify-content: center;
 }
 

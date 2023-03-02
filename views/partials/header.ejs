@@ -22,6 +22,9 @@
       document.addEventListener('DOMContentLoaded', (e) => {
       const calendar = new VanillaCalendar('#calendar', {
       actions: {
+        clickYear(event, year) {
+          null
+        },
         clickDay(event, dates) {              
           event.target.setAttribute("type", "submit");
           $.get(`/dashboard/show?date=${dates}`, function(data, status) { 
@@ -33,8 +36,9 @@
       settings: {
         selected: {
           month: document.URL.split('date').length === 1 ? new Date().getMonth() : document.URL.split('date')[1].split('-')[1] - 1,
-          year: document.URL.split('date').length === 1 ? new Date().getFullYear() : document.URL.split('date')[1].split('-')[0].slice(1)
-        }
+          year: document.URL.split('date').length === 1 ? new Date().getFullYear() : Number(document.URL.split('date')[1].split('-')[0].slice(1))
+        },
+        iso8601: false
       }
     });
     calendar.init();

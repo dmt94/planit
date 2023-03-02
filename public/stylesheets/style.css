@@ -9,7 +9,6 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: rgb(63,94,251);
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgb(23, 9, 36) 100%);
 }
 
@@ -562,11 +561,14 @@ form {
 
 .day-events-view {
   margin-top: 3vmin;
-  background-color: #141414;
+  background-color: #141414d7;
   align-items: center;
   padding: 5vmin;
-  border-radius: 9px;
-  border: 0.7px solid rgba(220, 207, 238, 0.7);
+  border-radius: 22px;
+}
+.events-list-header .event-title-header {
+  background-color: blue;
+  padding: 2vmin 0;
 }
 
 .day-events-view * {
@@ -585,7 +587,6 @@ form {
   background-color: rgba(255, 251, 245, 0.623);
   align-items: flex-start;
   padding: 2vmin;
-  margin: 2vmin;
   color: black;
 }
 

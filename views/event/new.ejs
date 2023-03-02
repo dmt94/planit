@@ -8,8 +8,13 @@
       <form class="flex-col original-form" action="/day/<%=dateId%>/event" method="POST">
         <div class="form-header new-event-header"><h2>Create New Event</h2></div>
         <%- include('../partials/eventForm')  %>
-        <input type="submit" value="Add New Event">
+        <div class="flex-row">
+          <a class="cancel-btn" href="/day/<%=dateId%>">Cancel New Event</a>          
+          <input type="submit" value="Add New Event">
+        </div>
+        
       </form>
+      
     </div>
 </div>
 

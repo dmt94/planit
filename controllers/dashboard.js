@@ -1,8 +1,6 @@
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
-// var requirejs = require('requirejs');
-
 
 module.exports = {
   index,

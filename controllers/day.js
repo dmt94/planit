@@ -1,8 +1,6 @@
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
-const user = require('../models/user');
-
 
 module.exports = {
   create,
@@ -40,8 +38,6 @@ async function show(req, res) {
   let date = dateWithEvents.date
   let events = dateWithEvents.event;
   let topThree = getData(events, "priority", "TOP 3");
-
-  console.log("date with events", dateWithEvents);
   
   res.render('date/show', {
     title: 'Day View',
@@ -57,9 +53,11 @@ async function show(req, res) {
 function create(req, res) {
   let date = req.query.date.split('-');
   let dateObj = new Date(date[0], Number(date[1]) - 1, date[2]);
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key];
+  }
 
   User.findOne(req.user, function(err, user) {
-    console.log("USER found:", user);
     DateModel.findOne({date: dateObj, user: user._id}, function(err, date) {
       if (!date) {
         Event.create({
@@ -69,11 +67,13 @@ function create(req, res) {
           priority: req.body.priority,
           specialEvent: req.body.specialEvent,
           time: req.body.time
-        }, function(err, event) {        
+        }, function(err, event) {       
+          if (err) return; 
           DateModel.create({
             date: dateObj,
             user: user._id
           }, function(err, date) {
+            if (err) return;
             date.event.push(event._id);
             date.save(function (err) {
               user.date.push(date);

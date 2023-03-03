@@ -15,6 +15,7 @@ const indexRouter = require('./routes/index');
 const dashboardRouter = require('./routes/dashboard');
 const dayRouter = require('./routes/day');
 const eventRouter = require('./routes/event');
+const settingsRouter = require('./routes/settings');
 
 const app = express();
 
@@ -47,7 +48,8 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/day', dayRouter);
-app.use('/', eventRouter)
+app.use('/', eventRouter);
+app.use('/settings', settingsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

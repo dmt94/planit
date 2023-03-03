@@ -1,7 +1,6 @@
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
-const { update } = require('../models/user');
 
 module.exports = {
   create,
@@ -12,10 +11,10 @@ module.exports = {
 }
 
 function updateEvent(req, res) {
-  console.log("ID",req.query.eventId);
   let filter = {
     _id: req.query.eventId
   };
+  if (!req.body.name) return;
   let update = {
     name: req.body.name,
     description: req.body.description,
@@ -71,7 +70,6 @@ function newEdit(req, res) {
   let dateId = req.params.id;
   
   Event.findById(eventId, function(err, event) {
-    console.log("name", event.name);
     res.render('event/update', {
       user: req.user,
       title: event.name,
@@ -83,9 +81,18 @@ function newEdit(req, res) {
 }
 
 function deleteEvent(req, res) {
-  console.log(req.query);
-  console.log(req);
-  Event.findByIdAndDelete(req.query.eventId, function(err, event) {
-    res.redirect(`/day/${req.params.id}`)
+  DateModel.find({user: req.user._id}, function(err, date){
+    date.forEach(dateObj => {      
+      let eventForDate = dateObj.event;
+      let indexOfEvent = eventForDate.indexOf(req.query.eventId);
+      if (eventForDate.includes(req.query.eventId)) {
+        dateObj.event.splice(indexOfEvent, 1);
+        dateObj.save(function(err) {
+          Event.findOneAndDelete({_id: req.query.eventId}, function(err, event) {
+          })
+          res.redirect(`/day/${req.params.id}`);
+        })                
+      }
+    })
   })
 }

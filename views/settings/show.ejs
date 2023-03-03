@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+<div class="dashboard-container flex-row">
+  <div>
+    <% if (user) { %>
+      <%- include('../partials/navbar') %>
+    <% } %>
+  </div>
+  <div class="container-div flex-col settings-div">
+    <h2>SETTINGS</h2>
+
+    <form action="/settings/delete?_method=DELETE" method="POST" class="flex-col">
+
+      <div class="flex-col setting-item-box">
+        <p id="delete-data-title">Delete All Your Data</p>
+        <input type="submit" value="clear all data" id="submit-all-clear">
+        <span id="success-message-all-data">All your data has been cleared</span>
+      </div>
+
+      <div class="flex-col setting-item-box">
+        <p id="">Change Background</p>
+        <form action="/changesty"></form>
+        <input type="color" name="color" id="color-choice">
+        <input type="submit" value="change background" id="color-choice-btn">
+        
+
+      </div>
+
+    </form>
+    
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

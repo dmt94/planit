@@ -26,6 +26,20 @@ body {
 .grid-2col * {
   text-align: center;
 }
+
+.dashboard-container {
+  justify-content: left;
+  gap: 12vmin;
+}
+
+.dashboard-container h2 {
+  margin-bottom: 3vmin;
+}
+.dashboard-container p {
+  color: rgb(216, 217, 255);
+  font-weight: 500;
+}
+
 .dashboard-date-input-div {
   background-color: rgba(0, 0, 0, 0.401);
   color: white;
@@ -220,7 +234,6 @@ div#calendar.vanilla-calendar.vanilla-calendar_default
   box-shadow: rgba(0, 0, 0, 0.491) 1.95px 1.95px 2.6px;
   justify-content: center;
 }
-
 .icon-img {
   width: 5vmin;
 }
@@ -235,7 +248,10 @@ div#calendar.vanilla-calendar.vanilla-calendar_default
   background-color: rgb(190, 188, 255);
 }
 .finance-icon {
-  background-color: rgb(187, 255, 151);
+  background-color: rgba(208, 243, 132, 0.733);
+}
+.settings-icon {
+  background-color: rgb(221, 231, 216);
 }
 
 .planit-icon {
@@ -323,7 +339,9 @@ nav h2 {
 }
 
 .sidebar a:hover {
-  opacity: 0.7;
+  opacity: 1;
+  transform: scale(1.2);
+  transition: all linear 500ms;
 }
 
 /* VISITOR */
@@ -377,12 +395,24 @@ nav h2 {
 
 /* DASHBOARD */
 
-.task-day-view {
+.task-day-view, .container-div {
   margin: 5vmin 5vmin;
   background-color: rgba(28, 28, 30, 0.524);
   height: 300px;
   color: white;
+  border-radius: 15px;
 }
+
+.container-div {
+  margin-left: 30vmin;
+  padding: 10vmin;
+}
+
+.container-div * {
+  font-family: 'Raleway';
+  letter-spacing: 3px;
+}
+
 .task-day-view div * {
   margin: 10px;
 }
@@ -467,7 +497,6 @@ nav h2 {
 }
 
 form {
-  margin-left: 14vmin;
   color: white;
 }
 
@@ -680,13 +709,13 @@ label {
   margin: 2vmin;
 }
 input[type="submit"] {
-  background-color: #3042dc;
+  background-color: #111112eb;
   margin: 3vmin 0;
   color: white;
-  border: none;
-  padding: 1vmin;
+  border: 1px solid white;
+  padding: 2vmin;
   font-size: 16px;
-
+  border-radius: 10px;
 }
 
 .cancel-btn {
@@ -711,7 +740,8 @@ textarea::placeholder {
 
 input[type="submit"]:hover {
   cursor: pointer;
-  background-color: #1f2023;
+  background-color: #b0b5c6;
+  color: black;
 }
 
 .delete-btn {
@@ -729,4 +759,28 @@ input[type="submit"]:hover {
 
 .delete-btn:hover {
   background-color: #dd7272;
+}
+/* INDICATOR TEXTS */
+#success-message-all-data {
+  color: greenyellow;
+  visibility: hidden;
+}
+
+/* SETTINGS */
+.setting-item-box {
+  background-color: #14141540;
+  text-align: center;
+  width: 100%;
+  padding: 4vmin 2vmin;
+  margin-top: 4vmin;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.48) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.setting-item-box input[type="color"] {
+  margin-top: 3vmin;
+}
+
+.settings-div {
+  height: 90vmin;
 }

@@ -4,7 +4,7 @@ let submitAllClearBtn = document.getElementById('submit-all-clear');
 let colorChoiceEl = document.getElementById('color-choice');
 let colorChoiceBtn = document.getElementById('color-choice-btn');
 let bodyEl = document.getElementById('main-body');
-// const DEFAULT_COLOR = `#2e3dA7'
+let askAIBtn = document.getElementById('ask-ai');
 let bgColorChoice;
 
 if (bgColorChoice === undefined) {
@@ -18,6 +18,12 @@ if (submitAllClearBtn) {
 }
 function changeBgColor(colorChoice) {
   bodyEl.style.background = `radial-gradient(circle, ${colorChoice} 0%, rgb(23, 9, 36) 100%)`;
+}
+
+if (askAIBtn) {
+  // askAIBtn.addEventListener("click", (e) => {
+  //   e.preventDefault();
+  // })
 }
 
 if (colorChoiceEl) {

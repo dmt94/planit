@@ -1,15 +1,14 @@
 <div class="chat-box flex-col">
   <h2>Ask AI</h2>
     <form action="/" method="POST" class="flex-col">
-      <textarea type="text" name="message">
-      </textarea>
+      <textarea type="text" name="message"></textarea>
       <input type="submit" value="Ask?" id="ask-ai">
     </form>
     <div class="chat-box-response">      
       <% if (message === "") { %>
           <p class="ai-response"></p>
       <% } else { %>
-        <p class="ai-response"><%= message %></p>
+        <p class="ai-response"><%=message%></p>
       <% } %>
     </div>
     

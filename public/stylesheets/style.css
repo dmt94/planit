@@ -772,20 +772,32 @@ input[type="submit"]:hover {
 }
 
 .chat-box-response {
-  background-color: #fdfbfbe0;
+  background-color: #466afbf8;
   padding: 1vmin;
   margin: 3vmin;
   border-radius: 10px;
+  max-width: 40vmin;
+  min-width: 30vmin;
+  display: inline;
+  color: 1px solid white;
+
 }
 
 .chat-box {
   margin-left: 3vmin;
-  background-color: #0e0e0e4f;
+  background-color: #5b59594f;
   border-radius: 20px;
+  border: 0.7px solid rgb(247, 245, 221);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .chat-box h2 {
   margin: 2vmin;
+}
+
+.chat-box .chat-box-response p.ai-response {
+  white-space: pre-line;
+  color: white;
 }
 
 .chat-box textarea {
@@ -796,7 +808,7 @@ input[type="submit"]:hover {
 }
 
 .chat-box * {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 /* SETTINGS */

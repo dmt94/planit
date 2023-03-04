@@ -44,12 +44,12 @@ router.get('/logout', function(req, res){
 });
 
 router.post('/', async (req, res) => {
-  let message = JSON.stringify(req.body.message);
+  let message = req.body.message;
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `${message}`,
+    prompt: `You are a personal assistant. Give suggestions, locations, tasks, events. Present lists in a bullet format. >${message}?`,
     max_tokens: 300,
-    temperature: 0,
+    temperature: 0.45,
   });
   console.log(response.data.choices);
   if (response.data) {
@@ -63,7 +63,5 @@ router.post('/', async (req, res) => {
     }
   }
 })
-
-
 
 module.exports = router;

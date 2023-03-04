@@ -1,3 +1,11 @@
+const OpenAI = require('openai');
+const {Configuration, OpenAIApi} = OpenAI;
+const configuration = new Configuration({
+  organization: "org-ur58xhyOEu4Z69CbXTO9Osb4",
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
@@ -34,6 +42,27 @@ router.get('/logout', function(req, res){
     res.redirect('/');
   });
 });
+
+router.post('/', async (req, res) => {
+  let message = JSON.stringify(req.body.message);
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: `${message}`,
+    max_tokens: 300,
+    temperature: 0,
+  });
+  console.log(response.data.choices);
+  if (response.data) {
+    if (response.data.choices) {
+      res.render('dashboard/askchat', {
+        title: "Chat GPT",
+        user: req.user,
+        message: response.data.choices[0].text
+      })
+      
+    }
+  }
+})
 
 
 

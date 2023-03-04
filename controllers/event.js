@@ -25,7 +25,6 @@ function updateEvent(req, res) {
   Event.findOneAndUpdate(filter, update, function(err, event) {
     event.save();
   });
-
   res.redirect(`/day/${req.params.id}`)
 }
 
@@ -61,7 +60,8 @@ function newEvent(req, res) {
     user: req.user,
     dateId: req.params.id,
     title: 'Add New Event',
-    event: ""
+    event: "",
+    message: ""
   })
 }
 
@@ -75,7 +75,8 @@ function newEdit(req, res) {
       title: event.name,
       dateId,
       eventId,
-      event
+      event,
+      message: ""
     })
   })
 }

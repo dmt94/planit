@@ -46,7 +46,8 @@ async function show(req, res) {
     events: events,
     date: date.toDateString(),
     getTime: getTime,
-    dateObj: dateWithEvents    
+    dateObj: dateWithEvents,
+    message: ""
   })
 }
 

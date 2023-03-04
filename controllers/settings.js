@@ -9,7 +9,8 @@ module.exports = {
 
 function show(req, res) {
   res.render('settings/show', {
-    title: 'Settings'
+    title: 'Settings',
+    message: ""
   })
 }
 function deleteAll(req, res) {

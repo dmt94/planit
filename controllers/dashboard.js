@@ -12,7 +12,8 @@ function index(req, res) {
   User.findOne(req.user, function(err, user) {    
     res.render('dashboard/index', {
       title: 'Dashboard',
-      user: user
+      user: user,
+      message: ""
     })
   })
 }
@@ -28,7 +29,8 @@ function show(req, res) {
           user: req.user,
           datePicked: req.query.date,
           title: 'Dashboard',
-          date: date
+          date: date,
+          message: ""
         })
       } else {
         if (date.event) {    
@@ -42,7 +44,8 @@ function show(req, res) {
               title: 'Dashboard',
               date: date,
               events: dateWithEvents.event,
-              dateObjId: dateWithEvents._id
+              dateObjId: dateWithEvents._id,
+              message: ""              
             })                    
         }
       }
@@ -50,12 +53,11 @@ function show(req, res) {
     )}         
       
 function newDateEvent(req, res) {
-
   res.render('dashboard/new', {
     user: req.user,
     date: req.query.date,
     title: 'Dashboard',
-    event: ""
-    
+    event: "",
+    message: ""
   })
 }

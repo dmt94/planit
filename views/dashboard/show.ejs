@@ -22,33 +22,36 @@
     <%- include('../partials/calendar') %>
   </div>
 
-  <div class="task-day-view flex-col">
-    <% if (date) { %>
-      <div class="flex-col">
-        <h3><%= date.date.toLocaleDateString() %></h3>
-        <h5>Priorities:</h5>
-        <% events.forEach(event => { %>
-          <% if (event.priority === 'TOP 3') { %>
-          <div class="flex-row priority-preview">
-            <div></div>
-            <div class="flex-col">
-              <h4 class="priority-name-preview"><%= event.name %></h4>
-              <div class="flex-row">
-                <a class="view-edit-btn" href="">View</a>
-                <a class="view-edit-btn" href="/day/<%=dateObjId%>/event/edit?eventId=<%=event._id%>">Edit</a>
+  <div class="flex-col">
+
+    <div class="task-day-view flex-col">
+      <% if (date) { %>
+          <h3><%= date.date.toLocaleDateString() %></h3>
+          <% events.forEach(event => { %>
+            <% if (event.priority === 'TOP 3') { %>
+            <div class="flex-row priority-preview">
+              <div></div>
+              <div class="flex-col priority-items-div">
+                <h4 class="priority-name-preview"><%= event.name %></h4>
+                <div class="flex-row">
+                  <a class="view-edit-btn" href="">View</a>
+                  <a class="view-edit-btn" href="/day/<%=dateObjId%>/event/edit?eventId=<%=event._id%>">Edit</a>
+                </div>
               </div>
-            </div>
-          </div> 
-          <% } %>         
-        <% }) %>
-        <a class="add-button" href="/day/<%=date._id%>">View details</a>
-      </div>
-    <% } else { %>
-      <h3><%= datePicked %></h3>
-      <div class="flex-col">
-        <h4>Add Event</h4>
-        <a class="add-button" href="/dashboard/new?date=<%=datePicked%>">Add</a>
-      </div>
+            </div> 
+            <% } %>         
+          <% }) %>
+   
+      <% } else { %>
+        <h3><%= datePicked %></h3>
+        <div class="flex-col">
+          <h4>Add Event</h4>
+          <a class="add-button" href="/dashboard/new?date=<%=datePicked%>">Add</a>
+        </div>
+      <% } %>
+    </div>
+    <% if (date) { %>
+      <a class="add-button details-btn" href="/day/<%=date._id%>">View details</a>
     <% } %>
   </div>
 

@@ -399,17 +399,30 @@ nav h2 {
 
 /* DASHBOARD */
 
+.task-day-view h3 {
+  background-color: #000000c6;
+  width: 100%;
+  text-align: center;
+  padding: 2vmin 0;
+  color: rgb(214, 255, 109);
+  margin-bottom: 2vmin;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
 .task-day-view, .container-div {
-  margin: 5vmin 5vmin;
-  background-color: rgba(28, 28, 30, 0.524);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  margin: 0;
+  background-color: rgba(28, 28, 30, 0.419);
   height: 300px;
-  color: white;
-  border-radius: 15px;
+  color: white; 
 }
 
 .container-div {
   margin-left: 30vmin;
   padding: 10vmin;
+  border-radius: 15px;
 }
 
 .container-div * {
@@ -417,18 +430,20 @@ nav h2 {
   letter-spacing: 3px;
 }
 
-.task-day-view div * {
-  margin: 10px;
-}
-
-.task-day-view a {
-  color: rgb(12, 12, 50);
-  background-color: #a4acf6;
-  padding: 2vmin;
-  border-radius: 8px;
+.details-btn {
+  color: rgb(245, 245, 254);
+  background-color: #202022;
+  padding: 2vmin 0;
   text-decoration: none;
+  width: 100%;
+  text-align: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 12px;
 }
-.task-day-view a:hover {
+.details-btn:hover {
   opacity: 0.8;
 }
 
@@ -468,11 +483,17 @@ nav h2 {
   padding: 0;
   margin: 0 3vmin 0 0;
   background-color: #00000000;
+  text-decoration: none;
+  color: black;
+}
+
+.view-edit-btn:hover {
+  color:#8e8989;
 }
 
 .add-btn:hover {
   background-color: #5667FF;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .button {
@@ -528,11 +549,12 @@ form {
 }
 
 .priority-preview {
-  background-color: #f5e570;
+  background-color: #f6f8ecd7;
   color: black;
   border-radius: 10px;
+  padding: 3vmin;
+  margin: 2vmin;
 }
-
 .priority-name-preview {
   font-size: 4vmin;
   font-family: 'Raleway';
@@ -542,6 +564,11 @@ form {
 .priority-view {
   background-image: linear-gradient(to right, rgb(80, 78, 114) , rgb(38, 37, 73)); 
   border-radius: 10px;
+}
+
+.priority-items-div .flex-row {
+  width: 100%;
+  margin-top: 1vmin;
 }
 
 .day-priority-view {
@@ -772,7 +799,7 @@ input[type="submit"]:hover {
 }
 
 .chat-box-response {
-  background-color: #466afbf8;
+  background-color: #a6a7ad83;
   padding: 1vmin;
   margin: 3vmin;
   border-radius: 10px;

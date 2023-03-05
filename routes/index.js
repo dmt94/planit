@@ -43,25 +43,32 @@ router.get('/logout', function(req, res){
   });
 });
 
-router.post('/', async (req, res) => {
-  let message = req.body.message;
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: `You are a personal assistant. Give suggestions, locations, tasks, events. Present lists in a bullet format. >${message}?`,
-    max_tokens: 300,
-    temperature: 0.45,
-  });
-  console.log(response.data.choices);
-  if (response.data) {
-    if (response.data.choices) {
-      res.render('dashboard/askchat', {
-        title: "Chat GPT",
-        user: req.user,
-        message: response.data.choices[0].text
-      })
-      
-    }
-  }
-})
+// async function askGPT(req, res, renderPath, title) {
+//   let message = req.body.message;
+//   const response = await openai.createCompletion({
+//     model: "text-davinci-003",
+//     prompt: `You are a personal assistant. Give suggestions, locations, tasks, events. Present lists in a bullet format. >${message}?`,
+//     max_tokens: 300,
+//     temperature: 0.45,
+//   });
+//   if (response.data) {
+//     if (response.data.choices) {
+//       res.render(renderPath, {
+//         title: title,
+//         user: req.user,
+//         message: response.data.choices[0].text,
+//         url: req._parsedOriginalUrl.href,        
+//       })      
+//     }
+//   }
+// }
+
+// /* */
+// router.post('/dashboard', async (req, res) => {
+//   askGPT(req, res, 'dashboard/index', 'Dashboard');
+// })
+// router.post('/dashboard/show', async (req, res) => {
+//   askGPT(req, res, 'dashboard/show', 'Dashboard');
+// })
 
 module.exports = router;

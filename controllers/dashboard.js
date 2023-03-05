@@ -1,3 +1,13 @@
+const OpenAI = require('openai');
+const {Configuration, OpenAIApi} = OpenAI;
+const configuration = new Configuration({
+  organization: "org-ur58xhyOEu4Z69CbXTO9Osb4",
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+const express = require('express');
+const router = express.Router();
+
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
@@ -5,23 +15,54 @@ const Event = require('../models/event');
 module.exports = {
   index,
   show,
-  new: newDateEvent
+  new: newDateEvent,
+  indexAI
+}
+async function askGPT(req) {
+  let message = req.body.message;
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: `You are a personal assistant. Give suggestions, locations, tasks, events. Present lists in a bullet format. >${message}?`,
+    max_tokens: 300,
+    temperature: 0.45,
+  });
+  console.log("RESPONSE ", response);
+  if (response.data) {
+    if (response.data.choices) {
+      return response;
+    }
+  }
 }
 
-function index(req, res) {
-  User.findOne(req.user, function(err, user) {    
-    res.render('dashboard/index', {
-      title: 'Dashboard',
-      user: user,
-      message: ""
-    })
+//RENDER INDEX
+function renderIndexDashboard(req, res, user, title, msg, url) {
+  res.render('dashboard/index', {
+    title: title,
+    user: user,
+    message: msg,
+    url: url
   })
+}
+function index(req, res) {
+  console.log('URL', req._parsedOriginalUrl);
+  console.log('URL path', req._parsedOriginalUrl.href);
+  User.findOne(req.user, function(err, user)
+   {    
+    renderIndexDashboard(req, res, user, "Dashboard", "", req._parsedOriginalUrl.href);
+  })
+}
+async function indexAI(req, res) {
+  let response = await askGPT(req);
+  User.findOne(req.user, function(err, user)
+  {    
+   renderIndexDashboard(req, res, user, "Dashboard", response.data.choices[0].text, req._parsedOriginalUrl.href);
+ });
 }
 
 function show(req, res) {
+  console.log("SHOW URL", req._parsedOriginalUrl)
   let date = req.query.date.split('-');
   let dateObj = new Date(date[0], Number(date[1]) - 1, date[2]);
-  console.log("GET REQUEST FOR PREVIEW: ", req);
   User.findOne(req.user, function(err, user) {
     DateModel.findOne({date: dateObj, user: user._id}, async function(err, date) {
       if (!date) {
@@ -30,7 +71,8 @@ function show(req, res) {
           datePicked: req.query.date,
           title: 'Dashboard',
           date: date,
-          message: ""
+          message: "",
+          url: req._parsedOriginalUrl.pathname
         })
       } else {
         if (date.event) {    
@@ -45,7 +87,8 @@ function show(req, res) {
               date: date,
               events: dateWithEvents.event,
               dateObjId: dateWithEvents._id,
-              message: ""              
+              message: "",
+              url: req._parsedOriginalUrl.pathname              
             })                    
         }
       }
@@ -58,6 +101,7 @@ function newDateEvent(req, res) {
     date: req.query.date,
     title: 'Dashboard',
     event: "",
-    message: ""
+    message: "",
+    url: req._parsedOriginalUrl.href
   })
 }

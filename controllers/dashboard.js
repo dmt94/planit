@@ -26,7 +26,6 @@ async function askGPT(req) {
     max_tokens: 300,
     temperature: 0.45,
   });
-  console.log("RESPONSE ", response);
   if (response.data) {
     if (response.data.choices) {
       return response;

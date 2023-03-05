@@ -8,5 +8,6 @@ router.post('/', ensureLoggedIn, dashBoardCtrl.indexAI)
 router.get('/show', ensureLoggedIn, dashBoardCtrl.show);
 router.post('/show', ensureLoggedIn, dashBoardCtrl.showAI);
 router.get('/new', ensureLoggedIn, dashBoardCtrl.new);
+router.post('/new', ensureLoggedIn, dashBoardCtrl.newDateEventAI);
 
 module.exports = router;

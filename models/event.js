@@ -65,9 +65,13 @@ const eventSchema = new Schema({
    ]
   },
   // tag: [tagSchema],
-  // date: {
-  //  type: Date
-  // },
+  date: {
+   type: Date,
+   default: function() {
+    let presentDate = new Date();
+    return presentDate;
+   }
+  },
   specialEvent: {
      type: Boolean,
      default: false

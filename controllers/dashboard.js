@@ -17,13 +17,18 @@ module.exports = {
   show,
   showAI,
   new: newDateEvent,
-  indexAI
+  indexAI,
+  newDateEventAI
 }
 async function askGPT(req) {
+  let user = req.user;
+  let events = await Event.find({user: req.user});
+  console.log(events);
+
   let message = req.body.message;
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `You are a personal assistant. Give suggestions, locations, tasks, events. Present lists in a bullet format. >${message}?`,
+    prompt: `You are a personal assistant. Give suggestions, locations, tasks, events if asked. Present lists in a bullet format. Greet with a message for ${user}. Look up ${events} and its properties if asked. >${message}?`,
     max_tokens: 300,
     temperature: 0.45,
   });
@@ -32,6 +37,7 @@ async function askGPT(req) {
       return response;
     }
   }
+return response;
 }
 
 //RENDER INDEX
@@ -98,20 +104,35 @@ async function showAI(req, res) {
   renderDashboard(req, res, response.data.choices[0].text);
 }
 
-function show(req, res) {
-  // console.log("SHOW URL", req._parsedOriginalUrl)
-  console.log('URL', req._parsedOriginalUrl);
-  console.log('URL path', req._parsedOriginalUrl.href);
+async function show(req, res) {
   renderDashboard(req, res, "");
-  }         
-      
-function newDateEvent(req, res) {
+  }
+
+function renderNewDateEvent(req, res, msg) {
+  const aNewEvent = new Event();
+  const dt = aNewEvent.date;
+  let currentDate = `${dt.getFullYear()}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
+
+  currentDate += `-${dt.getDate().toString().padStart(2, '0')}`;
+
+  console.log(currentDate)
+
   res.render('dashboard/new', {
     user: req.user,
     date: req.query.date,
     title: 'Dashboard',
     event: "",
-    message: "",
-    url: req._parsedOriginalUrl.href
+    message: msg,
+    url: req._parsedOriginalUrl.href,
+    currentDate
   })
+}
+      
+function newDateEvent(req, res) {
+  renderNewDateEvent(req, res, "");
+}
+
+async function newDateEventAI(req, res) {
+  let response = await askGPT(req);
+  renderNewDateEvent(req, res, response.data.choices[0].text);
 }

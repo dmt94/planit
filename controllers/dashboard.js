@@ -1,16 +1,10 @@
-const OpenAI = require('openai');
-const {Configuration, OpenAIApi} = OpenAI;
-const configuration = new Configuration({
-  organization: "org-ur58xhyOEu4Z69CbXTO9Osb4",
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
 const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
+const askGPT = require('./askgpt');
 
 module.exports = {
   index,
@@ -20,27 +14,6 @@ module.exports = {
   indexAI,
   newDateEventAI
 }
-async function askGPT(req) {
-  let user = req.user;
-  let events = await Event.find({user: req.user});
-  console.log(events);
-
-  let message = req.body.message;
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: `You are a personal assistant. Give suggestions, locations, tasks, events if asked. Present lists in a bullet format. Greet with a message for ${user}. Look up ${events} and its properties if asked. >${message}?`,
-    max_tokens: 300,
-    temperature: 0.45,
-  });
-  if (response.data) {
-    if (response.data.choices) {
-      return response;
-    }
-  }
-return response;
-}
-
-//RENDER INDEX
 function renderIndexDashboard(req, res, user, title, msg, url) {
   res.render('dashboard/index', {
     title: title,
@@ -56,7 +29,7 @@ function index(req, res) {
   })
 }
 async function indexAI(req, res) {
-  let response = await askGPT(req);
+  let response = await askGPT.askGPT(req);
   User.findOne(req.user, function(err, user)
   {    
    renderIndexDashboard(req, res, user, "Dashboard", response.data.choices[0].text, req._parsedOriginalUrl.href);
@@ -100,7 +73,8 @@ function renderDashboard(req, res, message) {
 }
 
 async function showAI(req, res) {
-  let response = await askGPT(req);
+  console.log(typeof askGPT);
+  let response = await askGPT.askGPT(req);
   renderDashboard(req, res, response.data.choices[0].text);
 }
 

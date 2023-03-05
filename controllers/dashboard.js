@@ -44,8 +44,6 @@ function renderIndexDashboard(req, res, user, title, msg, url) {
   })
 }
 function index(req, res) {
-  console.log('URL', req._parsedOriginalUrl);
-  console.log('URL path', req._parsedOriginalUrl.href);
   User.findOne(req.user, function(err, user)
    {    
     renderIndexDashboard(req, res, user, "Dashboard", "", req._parsedOriginalUrl.href);
@@ -71,7 +69,7 @@ function renderDashboard(req, res, message) {
           title: 'Dashboard',
           date: date,
           message: message,
-          url: req._parsedOriginalUrl.pathname
+          url: req._parsedOriginalUrl.path
         })
       } else {
         if (date.event) {    
@@ -87,7 +85,7 @@ function renderDashboard(req, res, message) {
               events: dateWithEvents.event,
               dateObjId: dateWithEvents._id,
               message: message,
-              url: req._parsedOriginalUrl.pathname              
+              url: req._parsedOriginalUrl.path              
             })                    
         }
       }
@@ -96,44 +94,14 @@ function renderDashboard(req, res, message) {
 }
 
 async function showAI(req, res) {
-  let repsonse = await askGPT(req);
-  let date = req.query.date.split('-');
-  let dateObj = new Date(date[0], Number(date[1]) - 1, date[2]);
-  User.findOne(req.user, function(err, user) {
-    DateModel.findOne({date: dateObj, user: user._id}, async function(err, date) {
-      if (!date) {
-        res.render('dashboard/show', {
-          user: req.user,
-          datePicked: req.query.date,
-          title: 'Dashboard',
-          date: date,
-          message: "",
-          url: req._parsedOriginalUrl.pathname
-        })
-      } else {
-        if (date.event) {    
-          let dateWithEvents = await DateModel.findById(date._id).populate({
-            path: 'event',
-            priority: 'TOP 3'
-          });
-            res.render('dashboard/show', {
-              user: req.user,
-              datePicked: req.query.date,
-              title: 'Dashboard',
-              date: date,
-              events: dateWithEvents.event,
-              dateObjId: dateWithEvents._id,
-              message: "",
-              url: req._parsedOriginalUrl.pathname              
-            })                    
-        }
-      }
-     })}
-    )
+  let response = await askGPT(req);
+  renderDashboard(req, res, response.data.choices[0].text);
 }
 
 function show(req, res) {
   // console.log("SHOW URL", req._parsedOriginalUrl)
+  console.log('URL', req._parsedOriginalUrl);
+  console.log('URL path', req._parsedOriginalUrl.href);
   renderDashboard(req, res, "");
   }         
       

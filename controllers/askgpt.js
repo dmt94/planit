@@ -11,7 +11,7 @@ module.exports = {
   askGPT: async (req) => {
     let user = req.user;
     let events = await Event.find({user: req.user});
-    let today = new Date(`${req.body.date}T00:00`);
+    let today = new Date() + 'T00:00';
   
     let message = req.body.message;
     const response = await openai.createCompletion({

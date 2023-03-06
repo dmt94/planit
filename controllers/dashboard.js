@@ -1,6 +1,3 @@
-const express = require('express');
-const router = express.Router();
-
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
@@ -73,7 +70,6 @@ function renderDashboard(req, res, message) {
 }
 
 async function showAI(req, res) {
-  console.log(typeof askGPT);
   let response = await askGPT.askGPT(req);
   renderDashboard(req, res, response.data.choices[0].text);
 }
@@ -86,11 +82,7 @@ function renderNewDateEvent(req, res, msg) {
   const aNewEvent = new Event();
   const dt = aNewEvent.date;
   let currentDate = `${dt.getFullYear()}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
-
   currentDate += `-${dt.getDate().toString().padStart(2, '0')}`;
-
-  console.log(currentDate)
-
   res.render('dashboard/new', {
     user: req.user,
     date: req.query.date,
@@ -107,6 +99,6 @@ function newDateEvent(req, res) {
 }
 
 async function newDateEventAI(req, res) {
-  let response = await askGPT(req);
+  let response = await askGPT.askGPT(req);
   renderNewDateEvent(req, res, response.data.choices[0].text);
 }

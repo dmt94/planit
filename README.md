@@ -46,6 +46,7 @@ ___
 ___
 
 <a href="https://trello.com/b/8n4we4d9/full-stack-app">Project Planning</a>
+<br>
 <a href="https://planitask.herokuapp.com/dashboard">Deployed App</a>
 
 ### Next Steps

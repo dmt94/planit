@@ -16,7 +16,7 @@ module.exports = {
     let message = req.body.message;
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `You are a personal assistant. Give suggestions, locations, tasks, events if asked. Present lists in a bullet format. Greet with a message for ${user}. Look up ${events} and its properties if asked. Refer to ${today} if asked about date or time. >${message}?`,
+      prompt: `You are a personal assistant. Give suggestions, locations, tasks, events if asked. Present lists in a bullet format. Greet with a message for ${user}. Look up ${events} and its properties if asked. Only refer to ${today} if event date matches. Add an emoji that represents an event or suggestion. >${message}?`,
       max_tokens: 300,
       temperature: 0.45,
     });

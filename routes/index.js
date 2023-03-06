@@ -1,16 +1,7 @@
-const OpenAI = require('openai');
-const {Configuration, OpenAIApi} = OpenAI;
-const configuration = new Configuration({
-  organization: "org-ur58xhyOEu4Z69CbXTO9Osb4",
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
-
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Planit' });
 });

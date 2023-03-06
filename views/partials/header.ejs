@@ -9,7 +9,6 @@
   </script>
 <script defer type="module" src="/javascripts/main.js"></script>
   <title>PlanIt</title>
-  <!--calendar script-->
   <% if (user) { %>
     <link href="
     https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.4.0/build/vanilla-calendar.min.css
@@ -24,7 +23,6 @@
       actions: {
         clickDay(event, dates) {              
           event.target.setAttribute("type", "submit");
-          console.log(dates);
           $.get(`/dashboard/show?date=${dates}`, function(data, status) {             
             window.location = `/dashboard/show?date=${dates}`;   
           })
@@ -43,7 +41,6 @@
     </script>
 
 <% } %>
-  <!--end of calendar script-->
 </head>
 <body id="main-body">
   <div>

@@ -11,7 +11,6 @@ module.exports = {
   askGPT: async (req) => {
     let user = req.user;
     let events = await Event.find({user: req.user});
-    console.log(events);
     let today = new Date();
   
     let message = req.body.message;

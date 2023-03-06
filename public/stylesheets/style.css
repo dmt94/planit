@@ -925,27 +925,28 @@ input[type="submit"]:hover {
   height: 90vmin;
 }
 
-/* view event container */
 .view-event-container {
-  margin-left: 5vmin;
+  margin-left: 15vmin;
   margin-right: 20vmin;
-  color: white;
+  color: rgb(21, 20, 20);
   align-items: flex-start;
   max-width: fit-content;
-  background-color: #19191ae4;
+  background-color: #eaeafeea;
 }
 
 .view-event-container h1 {
-  padding: 0
+  padding: 0;
+  color: black;
+  text-decoration: underline;
 }
 .view-event-container h2 {
-  background-color: #918a8a62;
   padding: 2vmin 1vmin;
-  border-radius: 10px;
+  border-radius: 2px;
+  color: white;
 }
 
 .view-event-container * {
-  margin: 1vmin 0;
+  margin: 2px 0;
 }
 
 .view-event-container h5 {
@@ -955,7 +956,7 @@ input[type="submit"]:hover {
   background-color: #f3ececce;
   padding: 2vmin 2vmin;
   text-align: left;
-  border-radius: 10px;
+  border-radius: 2px;
   color: black;
 }
 

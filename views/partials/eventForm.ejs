@@ -2,9 +2,9 @@
 <label for="">Event Name:</label>
 <% if (event !== "") { %>
   <input type="text" name="name" 
-  placeholder="<%= event.name %>">
+  placeholder="<%= event.name %>" value="<%=event.name%>">
   <label for="">Description:</label>
-  <textarea name="description" placeholder="<%=event.description%>"></textarea>
+  <textarea name="description" placeholder="<%=event.description%>"><%=event.description%></textarea>
 <% } else { %>
   <input type="text" name="name" 
   value="" required>

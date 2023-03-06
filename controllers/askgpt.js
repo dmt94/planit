@@ -12,11 +12,12 @@ module.exports = {
     let user = req.user;
     let events = await Event.find({user: req.user});
     console.log(events);
+    let today = new Date();
   
     let message = req.body.message;
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `You are a personal assistant. Give suggestions, locations, tasks, events if asked. Present lists in a bullet format. Greet with a message for ${user}. Look up ${events} and its properties if asked. Give time in 12 hour format. >${message}?`,
+      prompt: `You are a personal assistant. Give suggestions, locations, tasks, events if asked. Present lists in a bullet format. Greet with a message for ${user}. Look up ${events} and its properties if asked. Refer to ${today} if asked about date or time. >${message}?`,
       max_tokens: 300,
       temperature: 0.45,
     });

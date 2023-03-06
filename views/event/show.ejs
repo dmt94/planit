@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+<div class="flex-row">
+  <%- include('../partials/navbar') %>
+  <div class="flex-col view-event-container setting-item-box">
+    <h1><%= event.name %></h1>
+    <div class="flex-row">
+      <h5>Priority: </h5>
+      <h2><%= event.priority %></h2>
+    </div>
+    <p class="description"><%= event.description%></p>
+    <h5><%= event.date.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %></h5>
+    <h5 style="color: rgb(238, 101, 101)"><%= getTime(event.time) %></h5>
+
+  </div>
+</div>
+<%- include('../partials/footer') %>

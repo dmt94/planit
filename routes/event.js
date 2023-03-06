@@ -7,7 +7,7 @@ router.get('/day/:id/event/new', ensureLoggedIn, eventCtrl.new);
 router.post('/day/:id/event/new', ensureLoggedIn, eventCtrl.newAI);
 router.post('/day/:id/event', ensureLoggedIn, eventCtrl.create);
 
-// router.get('/day/:id/view/:eventId', eventCtrl.show);
+router.get('/day/:id/view', ensureLoggedIn, eventCtrl.show);
 
 router.get('/day/:id/event/edit', ensureLoggedIn, eventCtrl.newEdit);
 router.post('/day/:id/event/edit', ensureLoggedIn, eventCtrl.newEditAI);

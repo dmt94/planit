@@ -115,7 +115,8 @@ div#calendar.vanilla-calendar.vanilla-calendar_default {
 div#calendar.vanilla-calendar.vanilla-calendar_default 
 .vanilla-calendar-month, 
 div#calendar.vanilla-calendar.vanilla-calendar_default 
-.vanilla-calendar-year {
+.vanilla-calendar-year,
+.view-event-container h1  {
   color: rgb(233, 249, 252);
   font-size: 25px;
   letter-spacing: 3px;
@@ -747,7 +748,8 @@ form {
 }
 
 .form-wrap .original-form {
-  max-width: 500px;
+  max-width: fit-content;
+  padding: 0 10vmin;
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;
   font-family: 'Raleway';
@@ -787,6 +789,7 @@ textarea, input {
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 3vmin;
+  padding: 2vmin 10vmin;
 }
 .new-event-header h2 {
   font-weight: 600;
@@ -920,4 +923,46 @@ input[type="submit"]:hover {
 }
 .settings-div {
   height: 90vmin;
+}
+
+/* view event container */
+.view-event-container {
+  margin-left: 5vmin;
+  margin-right: 20vmin;
+  color: white;
+  align-items: flex-start;
+  max-width: fit-content;
+  background-color: #19191ae4;
+}
+
+.view-event-container h1 {
+  padding: 0
+}
+.view-event-container h2 {
+  background-color: #918a8a62;
+  padding: 2vmin 1vmin;
+  border-radius: 10px;
+}
+
+.view-event-container * {
+  margin: 1vmin 0;
+}
+
+.view-event-container h5 {
+  font-size: 3vmin;
+}
+.view-event-container .description {
+  background-color: #f3ececce;
+  padding: 2vmin 2vmin;
+  text-align: left;
+  border-radius: 10px;
+  color: black;
+}
+
+.description-div {
+  align-items: flex-start;
+}
+
+.view-event-container .flex-row {
+  gap: 2vmin;
 }

@@ -15,5 +15,7 @@
       <img src="https://cdn-icons-png.flaticon.com/512/484/484613.png" alt="" class="icon-img">
     </a>
   </div>
-  <%- include('../partials/chatgpt') %>
+  <% if (title !== "Event") { %>
+    <%- include('../partials/chatgpt') %>
+  <% } %>
 </div>

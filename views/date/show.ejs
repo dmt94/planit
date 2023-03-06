@@ -7,7 +7,6 @@
   </div>
 
   <div class="flex-col main-day-view">
-    <!--top bar-->
     <div class="date-div">
       <h1><%= date %></h1>
     </div>
@@ -26,7 +25,7 @@
                 <h5><%= getTime(priority.time) %></h5>
               <% } %>
               <div class="flex-row">
-                <a href="">View</a>
+                <a href="/day/<%=dateObj._id%>/view?eventId=<%=priority._id%>">View</a>
                 <a href="/day/<%=dateObj._id%>/event/edit?eventId=<%=priority._id%>">Edit</a>
               </div>
             </div>
@@ -42,7 +41,7 @@
             <% if (event.specialEvent) { %>
             <div class="flex-col special-view">              
               <h3><%= event.name %> </h3>
-              <a href="">View more</a>
+              <a href="/day/<%=dateObj._id%>/view?eventId=<%=event._id%>">View more</a>
             </div>
             <% } %>
           <% }) %>
@@ -82,7 +81,7 @@
                 <h4><%= event.name %></h4>
                 <p><%= event.description %></p>
                 <div class="flex-row">
-                  <a href="">View More</a>
+                  <a href="/day/<%=dateObj._id%>/view?eventId=<%=event._id%>">View More</a>
                   <a href="/day/<%=dateObj._id%>/event/edit?eventId=<%=event._id%>">Edit</a>
                 </div>              
               </div>
@@ -93,7 +92,6 @@
 
 
   </div>
-  <!--end of main day view-->
   
 
 </div>

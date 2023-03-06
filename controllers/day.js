@@ -78,7 +78,8 @@ function create(req, res) {
           description: req.body.description,
           priority: req.body.priority,
           specialEvent: req.body.specialEvent,
-          time: req.body.time
+          time: req.body.time,
+          date: new Date(`${req.body.date}T00:00`)
         }, function(err, event) {       
           if (err) return; 
           DateModel.create({

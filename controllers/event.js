@@ -11,7 +11,40 @@ module.exports = {
   newEdit,
   newEditAI,
   delete: deleteEvent,
-  update: updateEvent
+  update: updateEvent,
+  show
+}
+
+function getTime(time = '10:00') {
+  let timeSplit = time.split(':');
+  let meridian;
+  let hours = timeSplit[0];
+  let minutes = timeSplit[1];
+  if (hours > 12) {
+    meridian = 'PM';
+    hours -= 12;
+  } else if (hours < 12) {
+    meridian = 'AM';
+    if (hours == 0) {
+      hours = 12;
+    }
+  } else {
+    meridian = 'PM';
+  }   
+  return `${hours}:${minutes} ${meridian}`;
+}
+
+function show(req, res) {
+  let eventId = req.query.eventId;
+  
+  Event.findById(eventId, function(err, event) {
+    res.render('event/show', {
+      title: 'Event',
+      event: event,
+      eventId: eventId,
+      getTime: getTime
+    })
+  })
 }
 
 function updateEvent(req, res) {
@@ -25,7 +58,7 @@ function updateEvent(req, res) {
     priority: req.body.priority,
     specialEvent: req.body.specialEvent,
     time: req.body.time,
-    date: req.body.date
+    date: new Date(`${req.body.date}T00:00`)
   };
   Event.findOneAndUpdate(filter, update, function(err, event) {
     event.save();
@@ -47,7 +80,7 @@ function create(req, res) {
           priority: req.body.priority,
           specialEvent: req.body.specialEvent,
           time: req.body.time,
-          date: req.body.date
+          date: new Date(`${req.body.date}T00:00`)
         }, function(err, event) {
           if (err) {
             console.log(err);

@@ -15,10 +15,10 @@
       <div class="flex-col day-priority-view">
         <h3></h3>
         <div class="flex-row">
-          <!--for each top 3-->
-          <% topThree.forEach(priority => { %>
+          <% high.forEach(priority => { %>
           <div class="priority-view">
             <div class="flex-col priority-background">
+              <p class="priority-type"><%= priority.priority %></p>
               <h3><%= priority.name %></h3>
               <p><%= priority.description %></p>
               <% if (priority.time) { %>
@@ -30,12 +30,6 @@
                 <a href="/day/<%=dateObj._id%>/event/edit?eventId=<%=priority._id%>">Edit</a>
               </div>
             </div>
-            <!--add task later-->
-            <!-- <div class="flex-col">
-              <h5></h5>
-              <h2></h2>
-              <div class="flex-row"></div>
-            </div> -->
           </div>
           <% }) %>
         </div>
@@ -59,10 +53,6 @@
         <div class="button flex-col">
           <h4>Add Event</h4>
           <a class="add-btn add-event-btn" href="/day/<%=dateObj._id%>/event/new">+</a>
-        </div>
-        <div class="button flex-col">
-          <h4>Add Tag</h4>
-          <a class="add-btn add-tag-btn" href="">+</a>
         </div>
       </div>
   

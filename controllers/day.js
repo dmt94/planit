@@ -1,10 +1,12 @@
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
+const askGPT = require('./askgpt');
 
 module.exports = {
   create,
-  show
+  show,
+  showAI
 }
 
 function getData(arr, key, value) {
@@ -30,25 +32,34 @@ function getTime(time = '10:00') {
   return `${hours}:${minutes} ${meridian}`;
 }
 
-/* SHOW DAY DETAILS */
-async function show(req, res) {
+async function renderDayView(req, res, message, url) {
   let dateWithEvents = await DateModel.findById(req.params.id).populate({
     path: 'event'
   });
   let date = dateWithEvents.date
   let events = dateWithEvents.event;
-  let topThree = getData(events, "priority", "TOP 3");
+  let high = getData(events, "priority", "HIGH");
   
   res.render('date/show', {
     title: 'Day View',
     user: req.user,
-    topThree: topThree,
+    high: high,
     events: events,
     date: date.toDateString(),
     getTime: getTime,
     dateObj: dateWithEvents,
-    message: ""
+    message: message,
+    url: url
   })
+}
+
+function show(req, res) {
+  renderDayView(req, res, "", req._parsedOriginalUrl.path);
+}
+
+async function showAI(req, res) {
+  let response = await askGPT.askGPT(req);
+  renderDayView(req, res, response.data.choices[0].text, req._parsedOriginalUrl.path);
 }
 
 function create(req, res) {

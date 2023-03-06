@@ -2,6 +2,7 @@ const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
 const askGPT = require('./askgpt');
+const currentDate = require('./currentDate');
 
 module.exports = {
   index,
@@ -51,7 +52,7 @@ function renderDashboard(req, res, message) {
         if (date.event) {    
           let dateWithEvents = await DateModel.findById(date._id).populate({
             path: 'event',
-            priority: 'TOP 3'
+            priority: 'HIGH'
           });
             res.render('dashboard/show', {
               user: req.user,
@@ -79,10 +80,6 @@ async function show(req, res) {
   }
 
 function renderNewDateEvent(req, res, msg) {
-  const aNewEvent = new Event();
-  const dt = aNewEvent.date;
-  let currentDate = `${dt.getFullYear()}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
-  currentDate += `-${dt.getDate().toString().padStart(2, '0')}`;
   res.render('dashboard/new', {
     user: req.user,
     date: req.query.date,
@@ -90,7 +87,7 @@ function renderNewDateEvent(req, res, msg) {
     event: "",
     message: msg,
     url: req._parsedOriginalUrl.href,
-    currentDate
+    currentDate: currentDate.currentDate
   })
 }
       

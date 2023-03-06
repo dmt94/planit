@@ -1,11 +1,15 @@
 const User = require('../models/user');
 const DateModel = require('../models/date');
 const Event = require('../models/event');
+const askGPT = require('./askgpt');
+const currentDate = require('./currentDate');
 
 module.exports = {
   create,
   new: newEvent,
+  newAI,
   newEdit,
+  newEditAI,
   delete: deleteEvent,
   update: updateEvent
 }
@@ -20,7 +24,8 @@ function updateEvent(req, res) {
     description: req.body.description,
     priority: req.body.priority,
     specialEvent: req.body.specialEvent,
-    time: req.body.time
+    time: req.body.time,
+    date: req.body.date
   };
   Event.findOneAndUpdate(filter, update, function(err, event) {
     event.save();
@@ -41,7 +46,8 @@ function create(req, res) {
           description: req.body.description,
           priority: req.body.priority,
           specialEvent: req.body.specialEvent,
-          time: req.body.time
+          time: req.body.time,
+          date: req.body.date
         }, function(err, event) {
           if (err) {
             console.log(err);
@@ -55,14 +61,47 @@ function create(req, res) {
       })
     }
 
-function newEvent(req, res) {
+function renderNewEvent(req, res, message, url) {
   res.render('event/new', {
     user: req.user,
     dateId: req.params.id,
     title: 'Add New Event',
     event: "",
-    message: ""
+    message: message,
+    url: url,
+    currentDate: currentDate.currentDate
   })
+}
+
+function newEvent(req, res) {
+  renderNewEvent(req, res, "", req._parsedOriginalUrl.path);
+}
+
+async function newAI(req, res) {
+  let response = await askGPT.askGPT(req);
+  renderNewEvent(req, res, response.data.choices[0].text, req._parsedOriginalUrl.path);
+}
+
+async function newEditAI(req, res) {
+  let eventId = req.query.eventId;
+  let dateId = req.params.id;
+  let response = await askGPT.askGPT(req);
+  Event.findById(eventId, function(err, event) {
+    renderEditEvent(req, res, event, eventId, dateId, response.data.choices[0].text, req._parsedOriginalUrl.path)
+  })
+}
+
+function renderEditEvent(req, res, event, eventId, dateId, message, url) {  
+  res.render('event/update', {
+    user: req.user,
+    title: event.name,
+    dateId: dateId,
+    eventId: eventId,
+    event: event,
+    message: message,
+    url: url,
+    currentDate: currentDate.currentDate
+  })  
 }
 
 function newEdit(req, res) {
@@ -70,14 +109,7 @@ function newEdit(req, res) {
   let dateId = req.params.id;
   
   Event.findById(eventId, function(err, event) {
-    res.render('event/update', {
-      user: req.user,
-      title: event.name,
-      dateId,
-      eventId,
-      event,
-      message: ""
-    })
+    renderEditEvent(req, res, event, eventId, dateId, "", req._parsedOriginalUrl.path)
   })
 }
 

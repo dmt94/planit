@@ -38,6 +38,7 @@ body {
 .dashboard-container p {
   color: rgb(14, 14, 14);
   font-weight: 500;
+  /* margin-bottom: 4vmin; */
 }
 
 .settings-div p {
@@ -101,7 +102,7 @@ div#calendar.vanilla-calendar.vanilla-calendar_default {
 }
 
 .vanilla-calendar-week .vanilla-calendar-week__day {
-  color:rgb(228, 254, 113);
+  color:rgb(244, 249, 223);
   font-size: 19px;
   background-color: rgba(48, 48, 95, 0.401);
   padding: 1vmin 3vmin;
@@ -249,10 +250,7 @@ div#calendar.vanilla-calendar.vanilla-calendar_default
   opacity: 0.3;
 }
 .dashboard-icon {
-  background-color: rgb(190, 188, 255);
-}
-.finance-icon {
-  background-color: rgba(208, 243, 132, 0.733);
+  background-color: rgb(242, 231, 204);
 }
 .settings-icon {
   background-color: rgb(221, 231, 216);
@@ -404,7 +402,7 @@ nav h2 {
   width: 100%;
   text-align: center;
   padding: 2vmin 0;
-  color: rgb(214, 255, 109);
+  color: rgb(236, 248, 207);
   margin-bottom: 2vmin;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
@@ -417,6 +415,10 @@ nav h2 {
   background-color: rgba(28, 28, 30, 0.419);
   height: 300px;
   color: white; 
+}
+
+.task-day-view {
+  min-width: 200px;
 }
 
 .container-div {
@@ -444,13 +446,31 @@ nav h2 {
   font-size: 12px;
 }
 .details-btn:hover {
-  opacity: 0.8;
+  background-color: #3a3b51c8;
+}
+
+.add-new-event {
+  text-decoration: none;
+  color: white;
+  background-color: #121213eb;
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  margin: 2vmin;
+  border-radius: 50px;
+  font-size: 30px;
+}
+.add-new-event:hover {
+  background-color: #e1e1f9bb;
+  color: black;
 }
 
 .add-btn {
   text-decoration: none;
   color: black;
-  background-color: rgb(152, 137, 237);
+  background-color: rgb(202, 195, 241);
   margin-right: 4vmin;
   border-radius: 20px;
   font-size: 80px;
@@ -461,6 +481,7 @@ nav h2 {
   width: 80px;
   height: 70px;
 }
+
 
 .day-add-btns {
   margin: 3vmin;
@@ -492,7 +513,7 @@ nav h2 {
 }
 
 .add-btn:hover {
-  background-color: #5667FF;
+  background-color: #151617;
   color: rgb(255, 255, 255);
 }
 
@@ -541,7 +562,7 @@ form {
   margin: 8vmin;
   background-color: rgba(0, 0, 0, 0);
   color: white;
-  width: 120vmin;
+  /* width: 90vmin; */
 }
 
 .main-day-view a {
@@ -556,7 +577,7 @@ form {
   margin: 2vmin;
 }
 .priority-name-preview {
-  font-size: 4vmin;
+  font-size: 3vmin;
   font-family: 'Raleway';
   letter-spacing: 1px;
 }
@@ -585,6 +606,31 @@ form {
   border-radius: 10px;
   color: black;
   padding: 1vmin;
+  max-width: 30vmin;
+  min-height: 40vmin;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.priority-background * {
+  margin: 1vmin;
+  text-decoration: none;
+  color: black;
+}
+
+.priority-background a:hover {
+  color: gray;
+}
+
+.priority-background h3 {
+  font-family: 'Raleway';
+}
+.priority-background .priority-type {
+  font-family: 'Raleway';
+  background-color: #141414f5;
+  padding: 1vmin;
+  color: white;
+  border-radius: 10px;
 }
 
 /* SPECIAL */
@@ -627,7 +673,7 @@ form {
   border-radius: 22px;
 }
 .events-list-header .event-title-header {
-  background-color: blue;
+  background-color: #5667FF;
   padding: 2vmin 0;
 }
 
@@ -644,10 +690,32 @@ form {
 }
 
 .event-view {
-  background-color: rgba(255, 251, 245, 0.623);
+  background-color: rgba(249, 244, 237, 0.902);
   align-items: flex-start;
-  padding: 2vmin;
+  padding: 2vmin 3vmin;
   color: black;
+  border-radius: 10px;
+}
+
+.event-view * {
+  text-align: left;
+  margin: 1vmin 0;
+  text-decoration: none;
+}
+
+.event-view a {
+  color: rgb(29, 29, 32);
+}
+.event-view a:hover {
+  color: rgb(150, 150, 181);
+}
+
+
+.event-view h4 {
+  font-family: 'Raleway';
+  font-size: 3vmin;
+  text-transform: uppercase;
+  text-align: left;
 }
 
 .event-time {
@@ -656,7 +724,7 @@ form {
 }
 
 .event-time div {
-  background-color: rgba(70, 68, 68, 0.749);
+  background-color: rgba(70, 68, 68, 0.877);
   padding: 1vmin 3vmin;
   border-radius: 4px;
   color: white;
@@ -674,7 +742,6 @@ form {
 
 /* FORMS */ 
 .form-wrap {
-  /* margin-left: 0vmin; */
   width: 100%;
   margin: 4vmin;
 }

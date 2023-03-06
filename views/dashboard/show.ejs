@@ -28,10 +28,10 @@
       <% if (date) { %>
           <h3><%= date.date.toLocaleDateString() %></h3>
           <% events.forEach(event => { %>
-            <% if (event.priority === 'TOP 3') { %>
+            <% if (event.priority === 'HIGH') { %>
             <div class="flex-row priority-preview">
-              <div></div>
               <div class="flex-col priority-items-div">
+                <h5><%=event.priority%></h5>
                 <h4 class="priority-name-preview"><%= event.name %></h4>
                 <div class="flex-row">
                   <a class="view-edit-btn" href="">View</a>
@@ -46,7 +46,7 @@
         <h3><%= datePicked %></h3>
         <div class="flex-col">
           <h4>Add Event</h4>
-          <a class="add-button" href="/dashboard/new?date=<%=datePicked%>">Add</a>
+          <a class="add-new-event" href="/dashboard/new?date=<%=datePicked%>">+</a>
         </div>
       <% } %>
     </div>

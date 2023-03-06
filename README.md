@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     <form action="<%=url%>" method="POST" class="flex-col">
       <textarea type="text" name="message"></textarea>
 ```
-- On the server side, I was able to specify the role of the AI model, as a personal assistant that can make suggestions and retrieve the user's events if asked for them.
+- On the server side, I was able to specify the role of the AI model, as a personal assistant that can make suggestions and retrieve the user's events if asked for them. OpenAI API allows developers to fine tune the prompt for the AI model.
 ```javaScript
 askGPT: async (req) => {
     let user = req.user;

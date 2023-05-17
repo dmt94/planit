@@ -17,7 +17,7 @@
           <% high.forEach(priority => { %>
           <div class="priority-view">
             <div class="flex-col priority-background">
-              <p class="priority-type"><%= priority.priority %></p>
+              <p class="priority-type"><%=priority.priority%></p>
               <h3><%= priority.name %></h3>
               <p><%= priority.description %></p>
               <% if (priority.time) { %>
